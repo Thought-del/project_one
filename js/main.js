@@ -5,7 +5,7 @@ import { initCountrySelector } from './country-selector.js';
 function init3D() {
     const hero3d = document.querySelector('.hero__3d');
     const fallback = document.querySelector('.hero__3d-fallback');
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const prefersReducedMotion = false /* window.matchMedia('(prefers-reduced-motion: reduce)').matches; */
     if (prefersReducedMotion) {
         if (hero3d) hero3d.style.display = 'none';
         if (fallback) fallback.style.display = 'block';
