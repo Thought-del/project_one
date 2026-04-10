@@ -1,0 +1,105 @@
+.why-us {
+    position: relative;
+    background: rgba(217, 217, 217, 0.2);
+    overflow: hidden;
+}
+.why-us .container {
+    padding: 69px clamp(1rem, 10vw, 220px) 232px clamp(1rem, 10vw, 220px);
+}
+.why-info__label {
+    font-size: var(--font-size-base);
+    color: var(--color-gray-light);
+    border: 1px solid var(--color-black-13);
+    padding: 10px 16px;
+    border-radius: 50px;
+    margin-bottom: 34px;
+    display: inline-block;
+}
+.why-info .section-title {
+    font-size: clamp(2rem, 5vw, 56px);
+    letter-spacing: -0.06em;
+    margin-bottom: 30px;
+}
+.why-info p {
+    font-size: var(--font-size-lg);
+    color: var(--color-gray-medium);
+    max-width: 425px;
+    margin-bottom: 38px;
+}
+.why-us__grid {
+    display: flex;
+    gap: 10px;
+    min-height: 600px;
+}
+.why-item {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: flex 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.why-item:hover {
+    flex: 2;
+    max-height: 900px;
+    background: var(--color-black-25);
+}
+.why-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.why-item:hover img {
+    transform: scale(1.05);
+}
+.why-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--color-black-60), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+.why-item:hover::after {
+    opacity: 1;
+}
+.item-info {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    max-width: 270px;
+    z-index: 2;
+}
+.item-info h3 {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-white-52);
+    margin-bottom: 19px;
+}
+.item-info p {
+    font-size: clamp(1.5rem, 3vw, 33px);
+    font-weight: var(--font-weight-medium);
+    line-height: 0.96;
+    letter-spacing: -0.05em;
+    color: var(--color-white);
+}
+.item-info_bottom {
+    position: absolute;
+    left: -100%;
+    bottom: 55px;
+    max-width: 350px;
+    text-align: center;
+    transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 3;
+}
+.why-item:hover .item-info_bottom {
+    left: 50%;
+    transform: translateX(-50%);
+}
+.why-item__desc {
+    font-size: var(--font-size-md);
+    color: var(--color-white);
+}

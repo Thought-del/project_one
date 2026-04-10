@@ -1,0 +1,106 @@
+.footer {
+    position: relative;
+    background: var(--color-bg-dark);
+    overflow: hidden;
+}
+.footer .container {
+    padding: 56px clamp(1rem, 10vw, 220px) 0 clamp(1rem, 10vw, 220px);
+}
+.footer__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 60px;
+    margin-bottom: 162px;
+}
+.footer__logo {
+    max-width: 350px;
+}
+.images-logo {
+    display: flex;
+    align-items: center;
+    gap: 12.45px;
+    margin-bottom: 23px;
+}
+.images-logo img:first-child {
+    height: 41px;
+    width: auto;
+}
+.images-logo img:last-child {
+    height: 20.37px;
+    width: auto;
+}
+.footer__logo p {
+    font-size: 19px;
+    color: var(--color-gray-light);
+    line-height: 1.35;
+}
+.footer__nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+}
+.footer__nav li a {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    text-transform: uppercase;
+    color: var(--color-white);
+    text-decoration: none;
+}
+.footer__social p {
+    font-size: var(--font-size-lg);
+    color: var(--color-gray-light);
+    margin-bottom: 39px;
+}
+.footer__social-links {
+    display: flex;
+    gap: 11.77px;
+}
+.footer__social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34.12px;
+    height: 34.12px;
+    background: var(--color-primary);
+    border-radius: 16.81px;
+    padding: 10.34px 10.34px 10.34px 7.76px;
+}
+.footer__social-links a:last-child {
+    padding: 9.05px;
+}
+.footer__number p {
+    font-size: 28px;
+    text-transform: uppercase;
+    color: var(--color-white);
+}
+.footer__number a {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    text-transform: uppercase;
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+.footer__bottom {
+    border-top: 1px solid var(--color-white-11);
+    padding-top: 20px;
+    margin-bottom: 29px;
+    padding-inline: clamp(1rem, 10vw, 220px);
+}
+.footer__bottom div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.footer__bottom a, .footer__bottom p {
+    font-size: var(--font-size-base);
+    color: rgba(255, 255, 255, 0.2);
+    text-decoration: underline;
+}
+
+.footer__bottom p {
+    text-decoration: none;
+}
