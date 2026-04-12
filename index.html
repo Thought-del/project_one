@@ -76,17 +76,73 @@
                     <p class="header__phone">+7 495-177-00-07</p>
                     <a href="#" class="header__callback" target="_blank" rel="noopener noreferrer">заказать обратный звонок</a>
                 </div>
+
+                <button type="button" class="phone__btn" data-phone-open aria-expanded="false" aria-label="Показать телефон">
+                    <svg width="23" height="23" viewBox="0 0 23 23" fill="none" aria-hidden="true">
+                        <path d="M17.5645 21.5625C16.6876 21.5625 15.4558 21.2454 13.6113 20.2148C11.3684 18.957 9.63351 17.7958 7.40269 15.5708C5.25183 13.4213 4.20515 12.0296 2.74025 9.36397C1.08533 6.3542 1.36744 4.77655 1.68279 4.10227C2.05833 3.29637 2.61267 2.81436 3.32917 2.33594C3.73614 2.0693 4.16682 1.84073 4.61574 1.65313C4.66066 1.63381 4.70244 1.61539 4.73972 1.59877C4.96208 1.4986 5.299 1.34721 5.72576 1.50893C6.01056 1.61584 6.26482 1.83461 6.66283 2.22768C7.47906 3.03268 8.59447 4.82551 9.00595 5.70598C9.28222 6.2994 9.46505 6.69112 9.4655 7.13045C9.4655 7.64481 9.20675 8.04147 8.89275 8.46957C8.8339 8.54998 8.7755 8.6268 8.7189 8.70137C8.37705 9.15059 8.30203 9.28041 8.35144 9.51221C8.45162 9.97805 9.19867 11.3648 10.4264 12.5898C11.6541 13.8148 13.0009 14.5147 13.4685 14.6144C13.7102 14.6661 13.8427 14.5879 14.3063 14.2339C14.3728 14.1832 14.441 14.1306 14.5125 14.0781C14.9913 13.7218 15.3696 13.4698 15.8718 13.4698H15.8745C16.3116 13.4698 16.6858 13.6594 17.3057 13.9721C18.1143 14.3799 19.9611 15.481 20.771 16.2981C21.165 16.6952 21.3846 16.9486 21.492 17.2329C21.6537 17.661 21.5014 17.9966 21.4021 18.2212C21.3855 18.2585 21.3671 18.2994 21.3478 18.3448C21.1587 18.7929 20.9288 19.2226 20.6609 19.6286C20.1834 20.3429 19.6996 20.8959 18.8919 21.2719C18.4772 21.4681 18.0233 21.5675 17.5645 21.5625Z" fill="white"/>
+                    </svg>
+                </button>
+
+                <button type="button" class="burger" data-mobile-open aria-expanden="false" aria-label="Открыть меню">
+                    <svg width="27" height="27" viewBox="0 0 27 27" fill="none" aria-hidden="true">
+                        <path d="M3.375 20.25V18H23.625V20.25H3.375ZM3.375 14.625V12.375H23.625V14.625H3.375ZM3.375 9V6.75H23.625V9H3.375Z" fill="white"/>
+                    </svg>
+                </button>
             </div>
         </div>
     </header>
 
+    <!-- Кнопка бургера в хедере -->
+<button type="button" class="burger" data-mobile-open aria-expanded="false" aria-label="Открыть меню">
+    <svg width="27" height="27" viewBox="0 0 27 27" fill="none" aria-hidden="true">
+        <path d="M3.375 20.25V18H23.625V20.25H3.375ZM3.375 14.625V12.375H23.625V14.625H3.375ZM3.375 9V6.75H23.625V9H3.375Z" fill="white"/>
+    </svg>
+</button>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" data-mobile-menu aria-label="Навигационное меню">
+        <div class="mobile-menu__header">
+            <a href="/" class="mobile-logo">
+                <img src="images/Group 60.png" width="107.97" height="20.37" alt="" loading="lazy" decoding="async">
+            </a>
+            <button type="button" class="mobile-menu__close" data-mobile-close aria-label="Закрыть меню">
+                <svg width="23" height="23" viewBox="0 0 23 23" fill="none" aria-hidden="true">
+                    <path d="M2.275 22.75L0 20.475L9.1 11.375L0 2.275L2.275 0L11.375 9.1L20.475 0L22.75 2.275L13.65 11.375L22.75 20.475L20.475 22.75L11.375 13.65L2.275 22.75Z" fill="white" fill-opacity="0.5"/>
+                </svg>
+            </button>
+        </div>
+        <nav>
+            <ul class="mobile-nav-list">
+                <li><a href="#hero-section" data-mobile-nav-link>Главная</a></li>
+                <li><a href="#about-section" data-mobile-nav-link>О нас</a></li>
+                <li><a href="#portfolio-section" data-mobile-nav-link>Портфолио</a></li>
+                <li><a href="#projects-section" data-mobile-nav-link>Преимущества</a></li>
+                <li><a href="#contacts-section" data-mobile-nav-link>Контакты</a></li>
+            </ul>
+        </nav>
+        <button type="button" class="mobile-btn btn-primary">
+            Получить бесплатный замер
+        </button>
+    </div>
+
     <!-- Hero section -->
-    <section class="hero">
+    <section class="hero" id="hero-section">
+        <div class="hero-line-vertical"></div>
+        <div class="hero-line-horizontal"></div>
+        <div class="hero-line-diagonal"></div>
+
         <div class="hero-line-diagonal"></div>
         <div class="hero__content">
             <h2 class="hero__title">Мы делаем ремонт,<br>который вы видите до <span class="span-primary">начала работ</span></h2>
             <p class="hero__text">Вы заранее знаете, каким будет результат — благодаря полной VR-визуализации и прозрачному контролю на каждом этапе</p>
-            <button class="btn btn-primary hero__btn">Получить бесплатный замер</button>
+            <button class="btn btn-primary hero__btn">
+                Получить бесплатный замер
+            
+                <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
+                    <path d="M0.75 10.1L10.1 0.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M0.75 0.75H10.1V10.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
         </div>
 
         <div class="hero__vr">
@@ -103,18 +159,36 @@
             data-us-scale="1"
             data-us-dpi="1.5"
             data-us-fps="60">
-        </div>
-        <div class="hero__3d-fallback" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;">
-            <img src="images/do-animation.png" width="1900" height="1060" alt="" style="width:100%; height:100%; object-fit:cover;">
-            <img src="images/women-do-animation.png" width="1005" height="810" id="women-do" alt="" style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: auto;">
+        </div>        
+        <div class="hero__3d-fallback">
+            <div class="hero__fallback-left">
+                <img src="images/do-animation.png" alt="">
+            </div>
+            <div class="hero__fallback-right">
+                <img src="images/technology-in-frame.png" alt="">
+            </div>
+            <img src="images/women-do-animation.png" id="women-do" alt="">
         </div>
 
         <script src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v2.1.6/dist/unicornStudio.umd.js"></script>
     </section>
 
+    <div class="tech__vr">
+        <div class="tech__vr-icon">
+            <span>vr</span>
+            <img src="images/vr-icon.png" width="233" height="146" alt="" loading="lazy" decoding="async">
+        </div>
+        <p class="tech__vr-text">Прогуляйтесь по будущей квартире, утвердите каждую деталь <span class="span-primary">и только потом мы начнём делать ремонт</span></p>
+    </div>
+
     <!-- Technologies section -->
     <section class="technologies" id="about-section">
+        <div class="tech-line-vertical"></div>
+        <div class="tech-line-horizontal"></div>
+        <div class="tech-line-vertical_4"></div>
+
         <div class="container technologies__container">
+
             <div class="technologies__content">
                 <div class="technologies__label">о компании</div>
                 <h2 class="technologies__title"><span class="span-primary">Технологичный</span> подход к ремонту</h2>
@@ -157,6 +231,11 @@
                 <div class="technologies__frame">
                     <img src="images/technology-in-frame.png" width="734" height="457" alt="" loading="lazy" decoding="async">
                 </div>
+                <div class="technologies__overlay-text">
+                    <p>
+                        Прогуляйтесь по будущей квартире, утвердите каждую деталь <span class="span-primary">и только потом мы начнём делать ремонт</span>
+                    </p>
+                </div>
             </div>
         </div>
     </section>
@@ -189,28 +268,52 @@
                 <div class="slider-container" data-slider-container aria-live="polite" aria-atomic="true">
                     <div class="slider-track" data-slider-track>
                         <div class="slide" data-slide>
-                            <img src="images/55.png" width="762" height="549" alt="Квартира после ремонта на Балтийской улице" loading="lazy" decoding="async">
+                            <div class="slide__image-wrapper">
+                                <img src="images/55.png" width="762" height="549" alt="Квартира после ремонта на Балтийской улице" loading="lazy" decoding="async">
+
+                                <svg class="slide__icon" width="58" height="58" viewBox="0 0 58 58" fill="none" aria-hidden="true">
+<path d="M18.7321 0H1.93333C0.8642 0 0 0.8642 0 1.93333V17.4C0 18.4691 0.8642 19.3333 1.93333 19.3333C3.00247 19.3333 3.86667 18.4691 3.86667 17.4V3.86667H18.7321C19.8012 3.86667 20.6654 3.00247 20.6654 1.93333C20.6654 0.8642 19.8012 0 18.7321 0ZM18.7321 54.1333H3.86667V40.6C3.86667 39.5309 3.00247 38.6667 1.93333 38.6667C0.8642 38.6667 0 39.5309 0 40.6V56.0667C0 57.1358 0.8642 58 1.93333 58H18.7321C19.8012 58 20.6654 57.1358 20.6654 56.0667C20.6654 54.9975 19.8012 54.1333 18.7321 54.1333ZM56.0667 0H42.9993C41.9301 0 41.0659 0.8642 41.0659 1.93333C41.0659 3.00247 41.9301 3.86667 42.9993 3.86667H54.1333V17.4C54.1333 18.4691 54.9975 19.3333 56.0667 19.3333C57.1358 19.3333 58 18.4691 58 17.4V1.93333C58 0.8642 57.1358 0 56.0667 0ZM56.0667 38.6667C54.9975 38.6667 54.1333 39.5309 54.1333 40.6V54.1333H42.9993C41.9301 54.1333 41.0659 54.9975 41.0659 56.0667C41.0659 57.1358 41.9301 58 42.9993 58H56.0667C57.1358 58 58 57.1358 58 56.0667V40.6C58 39.5309 57.1358 38.6667 56.0667 38.6667Z" fill="white"/>
+</svg>
+                            </div>
                             <div class="slide-info">
                                 <h3>Москва · Балтийская улица</h3>
                                 <p>Полный ремонт под ключ с перепланировкой, заменой коммуникаций и чистовой отделкой</p>
                             </div>
                         </div>
                         <div class="slide" data-slide>
-                            <img src="images/56.png" width="762" height="549" alt="Квартира после ремонта на Петроградской" loading="lazy" decoding="async">
+                            <div class="slide__image-wrapper">
+                                <img src="images/56.png" width="762" height="549" alt="Квартира после ремонта на Петроградской" loading="lazy" decoding="async">
+
+                                <svg class="slide__icon" width="58" height="58" viewBox="0 0 58 58" fill="none" aria-hidden="true">
+<path d="M18.7321 0H1.93333C0.8642 0 0 0.8642 0 1.93333V17.4C0 18.4691 0.8642 19.3333 1.93333 19.3333C3.00247 19.3333 3.86667 18.4691 3.86667 17.4V3.86667H18.7321C19.8012 3.86667 20.6654 3.00247 20.6654 1.93333C20.6654 0.8642 19.8012 0 18.7321 0ZM18.7321 54.1333H3.86667V40.6C3.86667 39.5309 3.00247 38.6667 1.93333 38.6667C0.8642 38.6667 0 39.5309 0 40.6V56.0667C0 57.1358 0.8642 58 1.93333 58H18.7321C19.8012 58 20.6654 57.1358 20.6654 56.0667C20.6654 54.9975 19.8012 54.1333 18.7321 54.1333ZM56.0667 0H42.9993C41.9301 0 41.0659 0.8642 41.0659 1.93333C41.0659 3.00247 41.9301 3.86667 42.9993 3.86667H54.1333V17.4C54.1333 18.4691 54.9975 19.3333 56.0667 19.3333C57.1358 19.3333 58 18.4691 58 17.4V1.93333C58 0.8642 57.1358 0 56.0667 0ZM56.0667 38.6667C54.9975 38.6667 54.1333 39.5309 54.1333 40.6V54.1333H42.9993C41.9301 54.1333 41.0659 54.9975 41.0659 56.0667C41.0659 57.1358 41.9301 58 42.9993 58H56.0667C57.1358 58 58 57.1358 58 56.0667V40.6C58 39.5309 57.1358 38.6667 56.0667 38.6667Z" fill="white"/>
+</svg>
+                            </div>
                             <div class="slide-info">
                                 <h3>Санкт-Петербург · Петроградская</h3>
                                 <p>Дизайн-проект и реализация с заменой инженерии и отделки</p>
                             </div>
                         </div>
                         <div class="slide" data-slide>
-                            <img src="images/3.png" width="762" height="549" alt="Квартира в ЖК Скандинавия" loading="lazy" decoding="async">
+                            <div class="slide__image-wrapper">
+                                <img src="images/slide1.png" width="762" height="549" alt="Квартира в ЖК Скандинавия" loading="lazy" decoding="async">
+
+                                <svg class="slide__icon" width="58" height="58" viewBox="0 0 58 58" fill="none" aria-hidden="true">
+<path d="M18.7321 0H1.93333C0.8642 0 0 0.8642 0 1.93333V17.4C0 18.4691 0.8642 19.3333 1.93333 19.3333C3.00247 19.3333 3.86667 18.4691 3.86667 17.4V3.86667H18.7321C19.8012 3.86667 20.6654 3.00247 20.6654 1.93333C20.6654 0.8642 19.8012 0 18.7321 0ZM18.7321 54.1333H3.86667V40.6C3.86667 39.5309 3.00247 38.6667 1.93333 38.6667C0.8642 38.6667 0 39.5309 0 40.6V56.0667C0 57.1358 0.8642 58 1.93333 58H18.7321C19.8012 58 20.6654 57.1358 20.6654 56.0667C20.6654 54.9975 19.8012 54.1333 18.7321 54.1333ZM56.0667 0H42.9993C41.9301 0 41.0659 0.8642 41.0659 1.93333C41.0659 3.00247 41.9301 3.86667 42.9993 3.86667H54.1333V17.4C54.1333 18.4691 54.9975 19.3333 56.0667 19.3333C57.1358 19.3333 58 18.4691 58 17.4V1.93333C58 0.8642 57.1358 0 56.0667 0ZM56.0667 38.6667C54.9975 38.6667 54.1333 39.5309 54.1333 40.6V54.1333H42.9993C41.9301 54.1333 41.0659 54.9975 41.0659 56.0667C41.0659 57.1358 41.9301 58 42.9993 58H56.0667C57.1358 58 58 57.1358 58 56.0667V40.6C58 39.5309 57.1358 38.6667 56.0667 38.6667Z" fill="white"/>
+</svg>
+                            </div>
                             <div class="slide-info">
                                 <h3>Москва · ЖК Скандинавия</h3>
                                 <p>Посмотрите свой будущий интерьер в VR и заранее оцените планировку, свет и удобство.</p>
-                            </div>
+                            </div>            
                         </div>
                         <div class="slide" data-slide>
-                            <img src="images/8.png" width="762" height="549" alt="Современный интерьер квартиры" loading="lazy" decoding="async">
+                            <div class="slide__image-wrapper">
+                                <img src="images/slide2.png" width="762" height="549" alt="Современный интерьер квартиры" loading="lazy" decoding="async">
+
+                                <svg class="slide__icon" width="58" height="58" viewBox="0 0 58 58" fill="none" aria-hidden="true">
+<path d="M18.7321 0H1.93333C0.8642 0 0 0.8642 0 1.93333V17.4C0 18.4691 0.8642 19.3333 1.93333 19.3333C3.00247 19.3333 3.86667 18.4691 3.86667 17.4V3.86667H18.7321C19.8012 3.86667 20.6654 3.00247 20.6654 1.93333C20.6654 0.8642 19.8012 0 18.7321 0ZM18.7321 54.1333H3.86667V40.6C3.86667 39.5309 3.00247 38.6667 1.93333 38.6667C0.8642 38.6667 0 39.5309 0 40.6V56.0667C0 57.1358 0.8642 58 1.93333 58H18.7321C19.8012 58 20.6654 57.1358 20.6654 56.0667C20.6654 54.9975 19.8012 54.1333 18.7321 54.1333ZM56.0667 0H42.9993C41.9301 0 41.0659 0.8642 41.0659 1.93333C41.0659 3.00247 41.9301 3.86667 42.9993 3.86667H54.1333V17.4C54.1333 18.4691 54.9975 19.3333 56.0667 19.3333C57.1358 19.3333 58 18.4691 58 17.4V1.93333C58 0.8642 57.1358 0 56.0667 0ZM56.0667 38.6667C54.9975 38.6667 54.1333 39.5309 54.1333 40.6V54.1333H42.9993C41.9301 54.1333 41.0659 54.9975 41.0659 56.0667C41.0659 57.1358 41.9301 58 42.9993 58H56.0667C57.1358 58 58 57.1358 58 56.0667V40.6C58 39.5309 57.1358 38.6667 56.0667 38.6667Z" fill="white"/>
+</svg>
+                            </div>
                             <div class="slide-info">
                                 <h3>Москва · ЖК Высота</h3>
                                 <p>Комплексный ремонт с авторским дизайн-проектом</p>
@@ -236,7 +339,10 @@
                         <h3 class="why-item__title">Надежный ремонт</h3>
                         <p>Качество и долговечность</p>
                     </div>
-                    <img src="images/Rectangle 154.png" width="410" height="717" alt="" loading="lazy" decoding="async">
+                    <div class="item-info_bottom">
+                        <p class="why-item__desc">Выполняем ремонт с соблюдением всех технологий и контролем качества, чтобы результат служил годами.</p>
+                    </div>
+                    <img src="images/why1.png" width="410" height="717" alt="" loading="lazy" decoding="async">
                 </div>
                 <div class="why-item">
                     <div class="item-info">
@@ -253,7 +359,10 @@
                         <h3 class="why-item__title">Видеонаблюдение</h3>
                         <p>Контроль 24/7</p>
                     </div>
-                    <img src="images/Rectangle 158.png" width="410" height="717" alt="" loading="lazy" decoding="async">
+                    <div class="item-info_bottom">
+                        <p class="why-item__desc">На объекте ведётся видеонаблюдение 24/7, чтобы вы могли в любое время следить за ходом ремонта.</p>
+                    </div>
+                    <img src="images/why2.png" width="410" height="717" alt="" loading="lazy" decoding="async">
                 </div>
             </div>
         </div>
@@ -275,7 +384,7 @@
                     <p>Поможем спланировать ремонт и покажем будущий интерьер в VR</p>
 
                     <form class="form" data-form novalidate>
-                        <input type="text" name="name" id="form-name" placeholder="Ваше имя" autocomplete="given-name" required aria-required="true">
+                        <input type="text" name="name" id="form-name" placeholder="Введите ваше имя" autocomplete="given-name" required aria-required="true">
                         <span class="error-message" hidden></span>
 
                         <!-- Телефон с флагом -->
@@ -328,18 +437,20 @@
                         <textarea name="comment" id="form-message" required aria-required="true"></textarea>
 
                         <!-- Кастомный чекбокс -->
-                        <label class="custom-checkbox">
-                            <input type="checkbox" name="consent" id="form-consent" required aria-required="true">
-                            <span class="custom-checkbox__box">
-                                <svg width="9" height="7" viewBox="0 0 9 7" fill="none">
-                                    <path d="M0.360718 2.01286L3.56072 5.34619L8.36072 0.346191" stroke="white" stroke-width="1.5"/>
-                                </svg>
-                            </span>
-                            <span class="custom-checkbox__text">Вы соглашаетесь с нашей дружелюбной <a href="/privacy" target="_blank" rel="noopener noreferrer">политикой конфиденциальности</a></span>
-                        </label>
-                        <span class="error-message" hidden></span>
+                        <div class="form__bottom">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" name="consent" id="form-consent" required aria-required="true">
+                                <span class="custom-checkbox__box">
+                                    <svg width="9" height="7" viewBox="0 0 9 7" fill="none">
+                                        <path d="M0.360718 2.01286L3.56072 5.34619L8.36072 0.346191" stroke="white" stroke-width="1.5"/>
+                                    </svg>
+                                </span>
+                                <span class="custom-checkbox__text">Вы соглашаетесь с нашей дружелюбной <a href="#" target="_blank" rel="noopener noreferrer">политикой конфиденциальности</a></span>
+                            </label>
+                            <span class="error-message" hidden></span>
 
-                        <button type="submit" class="btn-submit btn-primary" data-form-submit>Получить консультацию</button>
+                            <button type="submit" class="btn-submit btn-primary" data-form-submit>Получить консультацию</button>
+                        </div>
                     </form>
                 </div>
 
@@ -349,21 +460,21 @@
                     <div class="contact-info">
                         <div class="contact_item-info">
                             <span>телефон</span>
-                            <p>+7 495-177-00-07</p>
+                            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Номер">+7 495-177-00-07</a>
                         </div>
                         <div class="contact_item-info">
                             <span>почта</span>
-                            <p>ingeit@gmail.com</p>
+                            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Почта">ingeit@gmail.com</a>
                         </div>
                         <div class="contact_item-info">
                             <span>социальные сети</span>
                             <div class="social-links">
-                                <a href="#" class="social-link" aria-label="Telegram">
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Telegram">
                                     <svg width="18" height="16" viewBox="0 0 18 16" fill="none" aria-hidden="true">
                                         <path d="M16.5387 0.172195L0.591584 6.35358C-0.0501582 6.64144 -0.267213 7.2179 0.436475 7.53075L4.52761 8.83762L14.4195 2.69265C14.9596 2.30688 15.5125 2.40975 15.0367 2.83412L6.54094 10.5662L6.27406 13.8384C6.52125 14.3436 6.97385 14.346 7.26255 14.0949L9.61303 11.8593L13.6386 14.8893C14.5736 15.4457 15.0823 15.0867 15.2835 14.0669L17.9239 1.49959C18.198 0.244336 17.7305 -0.308742 16.5387 0.172195Z" fill="white"/>
                                     </svg>
                                 </a>
-                                <a href="#" class="social-link" aria-label="Max">
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Max">
                                     <svg width="19" height="19" viewBox="0 0 19 19" fill="none" aria-hidden="true">
                                         <path d="M8.91917 0.0129929C3.41445 0.300632 -0.219298 4.61785 0.0102853 10.0619C0.110563 12.4448 1.06848 14.4952 1.29542 16.7567C1.35348 17.3426 1.18459 18.0656 1.86015 18.3216C2.6914 18.6356 3.96598 18.1079 4.66265 17.6249C4.90015 17.464 5.12709 17.2766 5.30126 17.0444C6.02167 17.522 6.70515 17.9838 7.56279 18.1897C11.339 19.0948 15.4768 17.0233 17.3161 13.6956C20.7731 7.4441 16.0996 -0.361729 8.91917 0.0129929ZM6.78167 13.0597C6.48348 13.2919 6.19584 13.6085 5.86598 13.7906C5.38834 14.0466 5.24056 13.7801 5.06112 13.3579C4.4964 12.0147 4.42778 9.72674 4.75765 8.32022C5.20098 6.40702 6.6814 4.72341 8.71598 4.54397C10.7743 4.36188 12.6849 5.40688 13.5478 7.29369C15.4583 11.4922 10.5685 15.6379 6.78167 13.0623V13.0597Z" fill="white"/>
                                     </svg>
@@ -372,7 +483,7 @@
                         </div>
                         <div class="contact_item-info">
                             <span>адрес</span>
-                            <p>Москва, Балтийская 5</p>
+                            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Адрес">Москва, Балтийская 5</a>
                         </div>
                     </div>
                 </div>
@@ -391,42 +502,50 @@
                 <p>Сделайте шаг к квартире, в которую вы влюбитесь с первого взгляда</p>
             </div>
 
-            <nav class="footer__nav">
-                <ul>
-                    <li><a href="#about-section">О нас</a></li>
-                    <li><a href="#portfolio-section">Портфолио</a></li>
-                    <li><a href="#projects-section">Наши преимущества</a></li>
-                    <li><a href="#contacts-section">Контакты</a></li>
-                </ul>
-            </nav>
+            <div class="footer__right">
+                <div>
+                    <nav class="footer__nav">
+                        <ul>
+                            <li><a href="#about-section">О нас</a></li>
+                            <li><a href="#portfolio-section">Портфолио</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#projects-section">Наши преимущества</a></li>
+                            <li><a href="#contacts-section">Контакты</a></li>
+                        </ul>
+                    </nav>
 
-            <div class="footer__social">
-                <p>Смотрите наши проекты в соцсетях:</p>
-                <div class="footer__social-links">
-                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
-                        <svg width="16" height="13" viewBox="0 0 16 13" fill="none" aria-hidden="true">
-                            <path d="M14.0525 0.147084L0.502653 5.42703C-0.0426181 5.67291 -0.227044 6.1653 0.370861 6.43253L3.84698 7.54882L12.2518 2.29998C12.7107 1.97047 13.1805 2.05833 12.7763 2.42082L5.55765 9.02533L5.3309 11.8203C5.54093 12.2519 5.92549 12.2539 6.17079 12.0394L8.16793 10.1299L11.5883 12.718C12.3828 13.1933 12.815 12.8866 12.986 12.0155L15.2294 1.2809C15.4624 0.208704 15.0652 -0.263718 14.0525 0.147084Z" fill="#141414"/>
-                        </svg>
-                    </a>
-                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Max">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                            <path d="M7.38172 0.0107902C2.82588 0.249665 -0.181496 3.83498 0.00851238 8.35606C0.0915046 10.335 0.884299 12.0378 1.07212 13.9159C1.12017 14.4024 0.980395 15.0029 1.5395 15.2155C2.22746 15.4763 3.28234 15.038 3.85892 14.6369C4.05548 14.5032 4.2433 14.3477 4.38745 14.1548C4.98368 14.5515 5.54934 14.935 6.25914 15.1059C9.38445 15.8576 12.809 14.1373 14.3312 11.3738C17.1923 6.18208 13.3244 -0.300404 7.38172 0.0107902ZM5.61267 10.8456C5.36588 11.0385 5.12782 11.3015 4.85482 11.4527C4.45952 11.6652 4.33721 11.4439 4.1887 11.0933C3.72132 9.97778 3.66454 8.07774 3.93754 6.90967C4.30445 5.32082 5.52968 3.92264 7.21355 3.77361C8.91708 3.6224 10.4983 4.49024 11.2125 6.05717C12.7937 9.54386 8.74672 12.9867 5.61267 10.8478V10.8456Z" fill="#141414"/>
-                        </svg>
-                    </a>
+                    <div class="footer__social">
+                        <p>Смотрите наши проекты в соцсетях:</p>
+                        <div class="footer__social-links">
+                            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+                                <svg width="16" height="13" viewBox="0 0 16 13" fill="none" aria-hidden="true">
+                                    <path d="M14.0525 0.147084L0.502653 5.42703C-0.0426181 5.67291 -0.227044 6.1653 0.370861 6.43253L3.84698 7.54882L12.2518 2.29998C12.7107 1.97047 13.1805 2.05833 12.7763 2.42082L5.55765 9.02533L5.3309 11.8203C5.54093 12.2519 5.92549 12.2539 6.17079 12.0394L8.16793 10.1299L11.5883 12.718C12.3828 13.1933 12.815 12.8866 12.986 12.0155L15.2294 1.2809C15.4624 0.208704 15.0652 -0.263718 14.0525 0.147084Z" fill="#141414"/>
+                                </svg>
+                            </a>
+                            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Max">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                    <path d="M7.38172 0.0107902C2.82588 0.249665 -0.181496 3.83498 0.00851238 8.35606C0.0915046 10.335 0.884299 12.0378 1.07212 13.9159C1.12017 14.4024 0.980395 15.0029 1.5395 15.2155C2.22746 15.4763 3.28234 15.038 3.85892 14.6369C4.05548 14.5032 4.2433 14.3477 4.38745 14.1548C4.98368 14.5515 5.54934 14.935 6.25914 15.1059C9.38445 15.8576 12.809 14.1373 14.3312 11.3738C17.1923 6.18208 13.3244 -0.300404 7.38172 0.0107902ZM5.61267 10.8456C5.36588 11.0385 5.12782 11.3015 4.85482 11.4527C4.45952 11.6652 4.33721 11.4439 4.1887 11.0933C3.72132 9.97778 3.66454 8.07774 3.93754 6.90967C4.30445 5.32082 5.52968 3.92264 7.21355 3.77361C8.91708 3.6224 10.4983 4.49024 11.2125 6.05717C12.7937 9.54386 8.74672 12.9867 5.61267 10.8478V10.8456Z" fill="#141414"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="footer__number">
-                <p>+7 495-177-00-07</p>
-                <a href="#" target="_blank" rel="noopener noreferrer">заказать обратный звонок</a>
+                <div class="footer__number">
+                    <p>+7 495-177-00-07</p>
+                    <a href="#" target="_blank" rel="noopener noreferrer">заказать обратный звонок</a>
+                </div>
             </div>
         </div>
 
         <div class="footer__bottom">
             <div>
                 <a href="#" target="_blank" rel="noopener noreferrer">Договор офферты</a>
-                <p>© 2025 Ингейт. Все права защищены.</p>
-                <a href="#" target="_blank" rel="noopener noreferrer">Политика конфиденциальности</a>
+                <div class="footer_videl">
+                    <p>2026. Все права защищены</p>
+                    <a href="#" target="_blank" rel="noopener noreferrer">Политика конфиденциальности</a>
+                </div>
             </div>
         </div>
     </footer>
@@ -450,16 +569,16 @@
                     <img src="images/Rectangle 148.png" width="186" height="123" alt="Гостиная" loading="lazy" decoding="async">
                 </button>
                 <button type="button" class="thumbnail" data-thumbnail="2">
-                    <img src="images/Rectangle 150.png" width="186" height="123" alt="Кухня" loading="lazy" decoding="async">
+                    <img src="images/kfd.png" width="186" height="123" alt="Кухня" loading="lazy" decoding="async">
                 </button>
                 <button type="button" class="thumbnail" data-thumbnail="3">
-                    <img src="images/Rectangle 151.png" width="186" height="123" alt="Спальня" loading="lazy" decoding="async">
+                    <img src="images/kfd2.png" width="186" height="123" alt="Спальня" loading="lazy" decoding="async">
                 </button>
                 <button type="button" class="thumbnail" data-thumbnail="4">
-                    <img src="images/Rectangle 152.png" width="186" height="123" alt="Ванная" loading="lazy" decoding="async">
+                    <img src="images/kfd3.png" width="186" height="123" alt="Ванная" loading="lazy" decoding="async">
                 </button>
                 <button type="button" class="thumbnail" data-thumbnail="5">
-                    <img src="images/Rectangle 153.png" width="186" height="123" alt="Коридор" loading="lazy" decoding="async">
+                    <img src="images/kfd4.png" width="186" height="123" alt="Коридор" loading="lazy" decoding="async">
                 </button>
             </div>
         </div>

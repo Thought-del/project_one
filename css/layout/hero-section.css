@@ -1,41 +1,47 @@
+/* _hero-section.css */
+
 .hero {
     position: relative;
     min-height: 100vh;
     overflow: hidden;
 }
-.hero::after {
-    content: "";
+
+.hero-line-vertical {
     position: absolute;
-    width: 1200px;
-    height: 0px;
-    left: -497px;
-    top: 50%;
+    width: 1px;
+    left: clamp(1.25rem, -0.1153rem + 5.8252vw, 6.875rem);
+    top: 0;
+    bottom: 0;
     border: 1px solid rgba(255, 255, 255, 0.18);
-    transform: rotate(90deg);
-    z-index: 2;
-}
-.hero::before {
-    content: "";
-    position: absolute;
-    width: 2000px;
-    height: 0px;
-    left: 0px;
-    top: 500px;
     transform: rotate(180deg);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    pointer-events: none;
     z-index: 2;
 }
-.hero-line-diagonal::after {
-    content: "";
+
+.hero-line-diagonal {
     position: absolute;
-    width: 928.96px;
-    height: 0px;
-    left: -300px;
-    top: 109px;
+    width: 1px;
+    left: clamp(1.875rem, -10.2679rem + 18.9732vw, 12.5rem);
+    top: -500px;
+    bottom: clamp(13.125rem, -0.4464rem + 21.2054vw, 25rem);
     border: 1px solid rgba(255, 255, 255, 0.18);
-    transform: rotate(-122.78deg);
+    transform: rotate(135.78deg);
+    pointer-events: none;
     z-index: 2;
 }
+
+.hero-line-horizontal {
+    position: absolute;
+    height: 1px;
+    left: 0;
+    top: clamp(14.375rem, -8.4821rem + 35.7143vw, 34.375rem);
+    right: 0;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    transform: rotate(180deg);
+    pointer-events: none;
+    z-index: 2;
+}
+
 .hero__content {
     position: absolute;
     bottom: clamp(1rem, 5vw, 90px);
@@ -47,6 +53,7 @@
     max-width: clamp(25.75rem, 16.0712rem + 20.2482vw, 38.25rem);
     width: 90%;
 }
+
 .hero__title {
     font-size: clamp(2rem, 6vw, 69px);
     font-weight: var(--font-weight-regular);
@@ -55,7 +62,11 @@
     letter-spacing: -0.06em;
     margin-bottom: 21px;
 }
-.span-primary { color: var(--color-primary); }
+
+.span-primary {
+    color: var(--color-primary);
+}
+
 .hero__text {
     font-size: clamp(0.875rem, 2vw, 18px);
     font-weight: var(--font-weight-regular);
@@ -65,15 +76,22 @@
     margin-bottom: 35px;
     max-width: 550px;
 }
+
 .btn-primary {
     background: var(--color-primary);
+    color: var(--color-white);
+    transition: background 0.3s ease, color 0.3s ease;
     border: none;
     cursor: pointer;
-    transition: background 0.2s;
 }
-.btn-primary:hover { background: var(--color-primary-dark); }
+
+.btn-primary:hover {
+    color: var(--color-primary);
+    background: var(--color-white);
+}
+
 .hero__btn {
-    color: var(--color-white);
+    position: relative;
     border-radius: 4px;
     font-size: clamp(0.875rem, 1.5vw, 17px);
     font-weight: var(--font-weight-medium);
@@ -81,11 +99,18 @@
     letter-spacing: -0.03em;
     padding: 20px 32px;
 }
+
+.hero__btn svg {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
 .hero__vr {
     position: absolute;
     bottom: clamp(1rem, 5vw, 90px);
     right: clamp(1rem, 8vw, 200px);
-    min-width: 280px;
+    width: min(320px, 25vw);
     z-index: 10;
     display: flex;
     flex-direction: column;
@@ -95,6 +120,7 @@
     backdrop-filter: blur(61px);
     padding: 2px;
 }
+
 .hero__vr-icon {
     position: relative;
     display: flex;
@@ -103,10 +129,12 @@
     border-radius: 9px;
     overflow: hidden;
     background: var(--color-white-05);
+    aspect-ratio: 233 / 146;
 }
+
 .hero__vr-icon span {
     position: absolute;
-    font-size: clamp(4rem, 12vw, 210px);
+    font-size: clamp(4rem, 8vw, 210px);
     font-weight: var(--font-weight-regular);
     line-height: 1.41;
     letter-spacing: -0.03em;
@@ -114,12 +142,15 @@
     color: var(--color-white-04);
     z-index: 1;
 }
+
 .hero__vr-icon img {
     position: relative;
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: contain;
     z-index: 2;
 }
+
 .hero__vr-text {
     font-size: clamp(0.75rem, 1.2vw, 15px);
     font-weight: var(--font-weight-regular);
@@ -129,21 +160,111 @@
     margin: 0 0 17px 17px;
     max-width: 270px;
 }
-/* .hero-line {
+
+/* 3D анимация */
+.hero__3d {
     position: absolute;
-    bottom: -6px;
-    left: clamp(1rem, 7vw, 130px);
-    z-index: 2;
-}
-.hero-line-horizontal {
-    position: absolute;
-    bottom: clamp(15rem, 20vw, 383px);
+    top: 0;
     left: 0;
-    z-index: 2;
+    width: 100%;
+    height: 100%;
+    transform: scale(1.5);
+    transform-origin: center center;
+    z-index: 1;
+    pointer-events: none;
 }
-.hero-line-diagonal {
+
+.hero__3d-fallback {
+    display: none;
     position: absolute;
-    top: clamp(1rem, 4vw, 64px);
-    left: clamp(1rem, 5vw, 90px);
-    z-index: 2;
-} */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero__3d-fallback img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#women-do {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: clamp(25rem, 15.8222rem + 39.1586vw, 62.8125rem);
+    height: auto;
+    z-index: 6;
+}
+
+/* ===== ПЛАНШЕТЫ (768px - 1024px) ===== */
+@media (min-width: 768px) and (max-width: 1024px) {
+    #women-do {
+        width: clamp(30rem, 40vw, 50rem);
+    }
+
+    .hero-line-diagonal, .hero-line-horizontal, .hero-line-vertical {
+        display: none;
+    }
+}
+
+/* ===== МОБИЛКИ ===== */
+@media (max-width: 768px) {
+    .hero {
+        min-height: 135vh;
+        padding: 0 20px;
+    }
+
+    .hero-line-diagonal, .hero-line-horizontal, .hero-line-vertical {
+        display: none;
+    }
+    
+    .hero__3d {
+        display: none;
+    }
+    
+    .hero__3d-fallback {
+        display: block;
+        min-height: 135vh;
+    }
+    
+    .hero__content {
+        position: absolute;
+        left: 0;
+        bottom: auto;
+        z-index: 999;
+        padding: 100px 20px 0;
+        background: var(--color-white-04);
+        backdrop-filter: blur(40.4px);
+        width: 100%;
+        display: flex;
+        align-items:center;
+        justify-content: center;
+    }
+    
+    .hero__title {
+        font-size: 45px;
+        margin-bottom: 19px;
+    }
+    
+    .hero__text {
+        font-size: 15px;
+        margin-bottom: 28px;
+    }
+    
+    .hero__btn {
+        width: 100%;
+        font-size: 15px;
+    }
+    
+    .hero__vr {
+        display: none;
+    }
+    
+    #women-do {
+        width: 83vh;
+    }
+}

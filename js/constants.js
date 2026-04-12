@@ -14,7 +14,7 @@ export const SELECTORS = {
     formPhone: '#form-phone',
     formMessage: '#form-message',
     formConsent: '#form-consent',
-    burger: '[data-burger]',
+    burger: '[data-mobile-open]',
     mobileMenu: '[data-mobile-menu]',
     mobileClose: '[data-mobile-close]',
     mobileNavLinks: '[data-mobile-nav-link]',

@@ -6,6 +6,12 @@ import { openLightboxFromSlide } from './lightbox.js';
 let currentPosition = 0, animationId = null, lastTimestamp = 0, isAutoPlaying = true;
 let track, slides, prevBtn, nextBtn, slideWidth = 0, sliderContainer;
 let reducedMotion = false;
+let isMobile = false;
+
+function checkMobile() {
+    isMobile = window.innerWidth <= 768;
+    return isMobile;
+}
 
 function getSlideWidth() { 
     const slide = slides[0]; 
@@ -36,7 +42,8 @@ function checkAndAddMore() {
 }
 
 function smoothAutoPlay(timestamp) {
-    if (!isAutoPlaying || reducedMotion) { 
+    // На мобилках автопрокрутку отключаем
+    if (!isAutoPlaying || reducedMotion || isMobile) { 
         animationId = requestAnimationFrame(smoothAutoPlay); 
         return; 
     }
@@ -55,7 +62,7 @@ function smoothAutoPlay(timestamp) {
 }
 
 function startAutoPlay() { 
-    if (reducedMotion) return;
+    if (reducedMotion || isMobile) return;
     if (animationId) cancelAnimationFrame(animationId); 
     isAutoPlaying = true; 
     lastTimestamp = 0; 
@@ -67,8 +74,7 @@ function stopAutoPlay() {
 }
 
 function nextSlide() {
-    if (reducedMotion) {
-        // Без анимации — просто переключаем без плавности
+    if (reducedMotion || isMobile) {
         currentPosition -= slideWidth;
         checkAndAddMore();
         updateTransform();
@@ -86,7 +92,7 @@ function nextSlide() {
 }
 
 function prevSlide() {
-    if (reducedMotion) {
+    if (reducedMotion || isMobile) {
         currentPosition += slideWidth;
         updateTransform();
         return;
@@ -102,7 +108,7 @@ function prevSlide() {
 }
 
 function handleSlideClick(e) {
-    const slide = e.target.closest(SELECTORS.slides);
+    const slide = e.target.closest('.slide');
     if (!slide) return;
     const title = slide.querySelector('h3')?.textContent || '';
     const desc = slide.querySelector('p')?.textContent || '';
@@ -110,8 +116,8 @@ function handleSlideClick(e) {
 }
 
 export function initSlider() {
-    // Проверяем настройки пользователя
-    reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    reducedMotion = false; /* window.matchMedia('(prefers-reduced-motion: reduce)').matches; */
+    checkMobile();
     
     track = document.querySelector(SELECTORS.sliderTrack);
     slides = document.querySelectorAll(SELECTORS.slides);
@@ -126,8 +132,8 @@ export function initSlider() {
     updateTransform();
     addMoreSlides();
     
-    // Если у пользователя отключены анимации — не запускаем автопрокрутку
-    if (!reducedMotion) {
+    // На мобилках автопрокрутку не запускаем
+    if (!reducedMotion && !isMobile) {
         startAutoPlay();
     }
     
@@ -135,7 +141,7 @@ export function initSlider() {
     if (nextBtn) nextBtn.addEventListener('click', nextSlide);
     
     if (sliderContainer) {
-        if (!reducedMotion) {
+        if (!reducedMotion && !isMobile) {
             sliderContainer.addEventListener('mouseenter', stopAutoPlay);
             sliderContainer.addEventListener('mouseleave', startAutoPlay);
         }
@@ -143,7 +149,18 @@ export function initSlider() {
     }
     
     window.addEventListener('resize', () => { 
-        slideWidth = getSlideWidth(); 
-        updateTransform(); 
+        const wasMobile = isMobile;
+        checkMobile();
+        slideWidth = getSlideWidth();
+        updateTransform();
+        
+        // Если изменилось с десктопа на мобилку или наоборот
+        if (wasMobile !== isMobile) {
+            if (isMobile || reducedMotion) {
+                stopAutoPlay();
+            } else {
+                startAutoPlay();
+            }
+        }
     });
 }

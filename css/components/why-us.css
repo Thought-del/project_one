@@ -1,11 +1,15 @@
+/* _why-us.css */
+
 .why-us {
     position: relative;
     background: rgba(217, 217, 217, 0.2);
     overflow: hidden;
 }
+
 .why-us .container {
     padding: 69px clamp(1rem, 10vw, 220px) 232px clamp(1rem, 10vw, 220px);
 }
+
 .why-info__label {
     font-size: var(--font-size-base);
     color: var(--color-gray-light);
@@ -15,43 +19,52 @@
     margin-bottom: 34px;
     display: inline-block;
 }
+
 .why-info .section-title {
     font-size: clamp(2rem, 5vw, 56px);
     letter-spacing: -0.06em;
     margin-bottom: 30px;
 }
+
 .why-info p {
     font-size: var(--font-size-lg);
     color: var(--color-gray-medium);
     max-width: 425px;
     margin-bottom: 38px;
 }
+
+/* Сетка карточек */
 .why-us__grid {
     display: flex;
     gap: 10px;
-    min-height: 600px;
     align-items: stretch;
 }
+
+/* Карточка */
 .why-item {
     flex: 1;
     position: relative;
     overflow: hidden;
     cursor: pointer;
     transition: flex 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    min-height: 900px;
-    max-height: 900px;
+    aspect-ratio: 410 / 717; /* Сохраняем пропорции картинки */
+    min-height: 800px;
+    max-height: 800px;
 }
+
 .why-item:hover {
     flex: 2;
-    min-height: 900px;
-    max-height: 900px;
 }
+
+/* Изображение в карточке */
 .why-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
 }
+
+/* Затемнение при наведении */
 .why-item::after {
     content: '';
     position: absolute;
@@ -60,10 +73,14 @@
     opacity: 0;
     transition: opacity 0.3s;
     pointer-events: none;
+    z-index: 1;
 }
+
 .why-item:hover::after {
     opacity: 1;
 }
+
+/* Верхняя информация (заголовок + короткое описание) */
 .item-info {
     position: absolute;
     top: 40px;
@@ -71,14 +88,17 @@
     transform: translateX(-50%);
     text-align: center;
     max-width: 270px;
+    width: 90%;
     z-index: 2;
 }
+
 .item-info h3 {
     font-size: var(--font-size-md);
     font-weight: var(--font-weight-medium);
     color: var(--color-white-52);
     margin-bottom: 19px;
 }
+
 .item-info p {
     font-size: clamp(1.5rem, 3vw, 33px);
     font-weight: var(--font-weight-medium);
@@ -86,20 +106,115 @@
     letter-spacing: -0.05em;
     color: var(--color-white);
 }
+
+/* Нижняя информация (выезжает при наведении) */
 .item-info_bottom {
     position: absolute;
     bottom: -100%;
     left: 50%;
     transform: translateX(-50%);
     max-width: 350px;
+    width: 90%;
     text-align: center;
     transition: bottom 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     z-index: 3;
 }
+
 .why-item:hover .item-info_bottom {
     bottom: 55px;
 }
+
 .why-item__desc {
+    line-height: 1.35;
+    font-weight: 400;
     font-size: var(--font-size-md);
     color: var(--color-white);
+}
+
+/* ===== АДАПТИВ ===== */
+
+/* Планшеты и маленькие десктопы */
+@media (max-width: 1024px) {
+    .why-item {
+        aspect-ratio: auto;
+        min-height: 600px;
+        max-height: 600px;
+    }
+    
+    .why-item:hover {
+        flex: 1.5;
+    }
+}
+
+@media (max-width: 768px) {
+    .why-us .container {
+        padding: 39px 20px 80px;
+    }
+    
+    .why-info__label {
+        margin-bottom: 15px;
+    }
+    
+    .why-info .section-title {
+        font-size: 38px;
+        margin-bottom: 18px;
+    }
+    
+    .why-info p {
+        font-size: 15px;
+        margin-bottom: 34px;
+    }
+    
+    .why-us__grid {
+        flex-direction: column;
+        gap: 28px;
+    }
+    
+    .why-item {
+        width: 100%;
+        min-height: 400px;
+        max-height: 400px;
+        aspect-ratio: auto;
+    }
+
+    .why-item img {
+        width: 100%;
+        min-height: 400px;
+    }
+    
+    .why-item:hover {
+        flex: 1;
+    }
+    
+    .why-item:hover::after {
+        opacity: 0;
+    }
+    
+    .item-info {
+        top: 25px;
+        width: 90%;
+    }
+    
+    .why-item__title {
+        font-size: 15px;
+        margin-bottom: 19px;
+    }
+    
+    .item-info p {
+        font-size: 30px;
+    }
+    
+    .item-info_bottom {
+        bottom: 25px;
+        transition: none;
+        width: 93%;
+    }
+    
+    .why-item__desc {
+        font-size: 15px;
+    }
+    
+    .why-item:hover .item-info_bottom {
+        bottom: 25px;
+    }
 }

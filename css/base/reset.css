@@ -5,6 +5,13 @@
     font-family: var(--font-family);
 }
 
+button {
+    font: inherit;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
 /* @media(prefers-reduced-motion: reduce) {
     * {
         transition: none !important;
@@ -19,13 +26,6 @@ a {
     font: inherit;
     text-decoration: none;
     color: inherit;
-}
-
-button {
-    font: inherit;
-    border: none;
-    background: none;
-    cursor: pointer;
 }
 
 img {

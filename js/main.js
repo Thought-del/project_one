@@ -2,10 +2,12 @@ import { initSlider } from './slider.js';
 import { initLightbox } from './lightbox.js';
 import { initFormValidation } from './validation.js';
 import { initCountrySelector } from './country-selector.js';
+import { initMenu } from './menu.js';
+
 function init3D() {
     const hero3d = document.querySelector('.hero__3d');
     const fallback = document.querySelector('.hero__3d-fallback');
-    const prefersReducedMotion = false /* window.matchMedia('(prefers-reduced-motion: reduce)').matches; */
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) {
         if (hero3d) hero3d.style.display = 'none';
         if (fallback) fallback.style.display = 'block';
@@ -31,5 +33,6 @@ function init() {
     initLightbox();
     initFormValidation();
     initCountrySelector();
+    initMenu();
 }
 document.addEventListener('DOMContentLoaded', init);

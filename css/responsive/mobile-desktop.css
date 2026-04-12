@@ -1,0 +1,333 @@
+/* ============================================
+   АДАПТИВ: ПЛАНШЕТЫ (768px - 1024px)
+   ============================================ */
+
+@media (max-width: 1024px) {
+    /* Контейнеры и отступы */
+    .header__container,
+    .technologies__content,
+    .projects-info,
+    .slider-controls,
+    .why-us .container,
+    .contact .container,
+    .footer .container {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    /* Hero */
+    .hero__content {
+        left: 40px;
+        bottom: 40px;
+        max-width: 50%;
+    }
+    .hero__title {
+        font-size: clamp(2rem, 6vw, 69px);
+    }
+    .hero__vr {
+        right: 40px;
+        bottom: 40px;
+        min-width: 260px;
+    }
+    .hero__vr-text {
+        font-size: 13px;
+    }
+
+    /* Technologies */
+    .technologies__container {
+        grid-template-columns: 1fr;
+    }
+    .technologies__content {
+        padding: 60px 40px;
+    }
+    .technologies__media {
+        min-height: 400px;
+    }
+    .technologies__image-overlay {
+        left: 20px;
+        width: 40%;
+    }
+    .technologies__frame {
+        top: 10%;
+        right: 20px;
+        width: 35%;
+    }
+
+    /* Slider */
+    .slide {
+        flex: 0 0 calc((100% - 28px) / 2);
+    }
+    .slide-info h3 {
+        font-size: 22px;
+    }
+
+    /* Why us */
+    .why-us__grid {
+        flex-wrap: wrap;
+    }
+    .why-item {
+        flex: 1 1 100%;
+        min-height: 400px;
+    }
+    .why-item .item-info_bottom {
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 80%;
+    }
+
+    /* Contact */
+    .contact__grid {
+        flex-direction: column;
+    }
+    .contact-item {
+        max-width: 100%;
+    }
+    .btn-submit {
+        padding: 20px 80px;
+    }
+
+    /* Footer */
+    .footer__container {
+        flex-wrap: wrap;
+        gap: 40px;
+    }
+    .footer__logo, .footer__nav, .footer__social, .footer__number {
+        flex: 1 1 200px;
+    }
+}
+
+
+/* ============================================
+   АДАПТИВ: МОБИЛЬНЫЕ УСТРОЙСТВА (ДО 768px)
+   ============================================ */
+
+@media (max-width: 768px) {
+    /* Глобальные отступы */
+    .header__container,
+    .technologies__content,
+    .projects-info,
+    .slider-controls,
+    .why-us .container,
+    .contact .container,
+    .footer .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    /* Header — появляется бургер */
+    .desktop-nav {
+        display: none;
+    }
+    .burger {
+        display: flex;
+    }
+
+    /* Hero */
+    .hero__content {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        margin: 100px 0 40px 20px;
+        max-width: 90%;
+        z-index: 1000;
+    }
+    .hero__title {
+        font-size: 32px;
+    }
+    .hero__text {
+        font-size: 14px;
+    }
+    .hero__btn {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+    .hero__vr {
+        position: relative;
+        right: auto;
+        top: 200px;
+        margin-top: auto;
+        margin: 0 auto;
+        width: 90%;
+        min-width: auto;
+    }
+    .hero__vr-icon span {
+        font-size: 100px;
+    }
+    .hero__vr-text {
+        font-size: 12px;
+        margin: 0 auto 17px;
+        text-align: center;
+    }
+    .hero-line,
+    .hero-line-horizontal,
+    .hero-line-diagonal {
+        display: none;
+    }
+
+    /* Technologies */
+    .technologies__content {
+        padding: 40px 20px;
+    }
+    .technologies__title {
+        font-size: 32px;
+    }
+    .technologies__description p {
+        font-size: 14px;
+    }
+    .technologies__grid {
+        flex-direction: column;
+        gap: 40px;
+    }
+    .tech-card {
+        max-width: 100%;
+    }
+    .technologies__image-overlay {
+        left: 10px;
+        width: 45%;
+    }
+    .technologies__frame {
+        right: 10px;
+        width: 40%;
+    }
+
+    /* Projects */
+    .projects-info {
+        padding-top: 40px;
+        text-align: center;
+        align-items: center;
+    }
+    .projects-info p {
+        max-width: 100%;
+    }
+    .slider-controls {
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    .slider-container {
+        overflow: hidden;
+    }
+    .slide {
+        flex: 0 0 100%;
+    }
+    .slide-info h3 {
+        font-size: 20px;
+    }
+    .slide-info p {
+        font-size: 13px;
+    }
+
+    /* Why us */
+    .why-info {
+        text-align: center;
+    }
+    .why-info .section-title {
+        font-size: 32px;
+    }
+    .why-info p {
+        font-size: 14px;
+    }
+    .why-item {
+        min-height: 300px;
+    }
+    .item-info {
+        top: 20px;
+    }
+    .item-info h3 {
+        font-size: 14px;
+    }
+    .item-info p {
+        font-size: 20px;
+    }
+    .why-item__desc {
+        font-size: 12px;
+    }
+
+    /* Contact */
+    .contact .section-title {
+        font-size: 32px;
+    }
+    .contact-item h3 {
+        font-size: 28px;
+    }
+    .contact-item > p {
+        font-size: 14px;
+    }
+    .form input,
+    .form textarea {
+        font-size: 14px;
+    }
+    .btn-submit {
+        padding: 16px 40px;
+        font-size: 15px;
+    }
+    .contact_item-info p {
+        font-size: 22px;
+    }
+    .social-link {
+        width: 44px;
+        height: 44px;
+    }
+
+    /* Footer */
+    .footer__container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 30px;
+    }
+    .footer__logo {
+        max-width: 100%;
+    }
+    .footer__nav ul {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+    .footer__number p {
+        font-size: 22px;
+    }
+    .footer__bottom div {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* ============================================
+   АДАПТИВ: ОЧЕНЬ МАЛЕНЬКИЕ ЭКРАНЫ (ДО 480px)
+   ============================================ */
+
+@media (max-width: 480px) {
+    .hero__title {
+        font-size: 28px;
+    }
+    .hero__btn {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+    .hero__vr-icon span {
+        font-size: 80px;
+    }
+    .technologies__title {
+        font-size: 28px;
+    }
+    .section-title {
+        font-size: 28px;
+    }
+    .slide-info h3 {
+        font-size: 18px;
+    }
+    .slide-info p {
+        font-size: 12px;
+    }
+    .contact-item h3 {
+        font-size: 24px;
+    }
+    .btn-submit {
+        padding: 14px 20px;
+        font-size: 14px;
+    }
+    .footer__number p {
+        font-size: 18px;
+    }
+}

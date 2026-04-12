@@ -1,11 +1,21 @@
+/* _animation-hero.css */
+
 body {
     min-height: 100vh;
 }
+
 .hero {
     position: relative;
-    min-height: 90vh;
+    min-height: 100vh;
     overflow: hidden;
+    /* Фон для десктопа */
+    background-image: url('../images/do-animation.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
+
+/* 3D анимация (если активна) */
 .hero__3d {
     position: absolute;
     top: 0;
@@ -17,17 +27,91 @@ body {
     z-index: 1;
     pointer-events: none;
 }
+
+/* Fallback для мобилок и планшетов */
 .hero__3d-fallback {
     display: none;
-}
-#women-do {
-    height: clamp(18.75rem, -16.2865rem + 54.7445vw, 56.25rem);
-    z-index: 6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
 }
 
-@media(max-width: 1920px) {
-    .hero__3d-fallback img:last-child {
-        max-width: clamp(50rem, 26.6423rem + 36.4964vw, 75rem);
-        max-height: clamp(25rem, -4.1971rem + 45.6204vw, 56.25rem);
+/* Левая и правая картинки */
+.hero__fallback-left,
+.hero__fallback-right {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.hero__fallback-left {
+    left: 0;
+}
+
+.hero__fallback-right {
+    right: 0;
+}
+
+.hero__fallback-left img,
+.hero__fallback-right img {
+    width: auto;
+    height: 100%;
+    max-width: none;
+}
+
+.hero__fallback-left img {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.hero__fallback-right img {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+#women-do {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: clamp(25rem, 15.8222rem + 39.1586vw, 62.8125rem);
+    height: auto;
+    z-index: 6;
+    pointer-events: none;
+}
+
+/* ===== ПЛАНШЕТЫ И МОБИЛКИ ===== */
+@media (max-width: 1024px) {
+    .hero {
+        background-image: none;
+    }
+    
+    .hero__3d {
+        display: none;
+    }
+    
+    .hero__3d-fallback {
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        min-height: 135vh;
+    }
+    
+    .hero__3d-fallback {
+        min-height: 135vh;
+    }
+    
+    #women-do {
+        width: 83vh;
     }
 }

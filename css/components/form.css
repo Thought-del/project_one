@@ -1,8 +1,11 @@
+/* _contact.css */
+
 .contact {
     position: relative;
     background: var(--color-black-42);
     overflow: hidden;
 }
+
 .contact > img {
     position: absolute;
     top: 0;
@@ -12,15 +15,19 @@
     object-fit: cover;
     z-index: 1;
 }
+
 .contact .container {
     position: relative;
     padding: 112px clamp(1rem, 15vw, 336px) 126px clamp(1rem, 15vw, 336px);
     z-index: 2;
 }
+
+/* Верхняя часть */
 .contact_info {
     text-align: center;
     margin-bottom: 76px;
 }
+
 .contact__label {
     font-size: var(--font-size-base);
     color: var(--color-white);
@@ -30,42 +37,51 @@
     display: inline-block;
     margin-bottom: 24px;
 }
+
 .contact .section-title {
     font-size: clamp(2rem, 5vw, 56px);
     letter-spacing: -0.06em;
     color: var(--color-white);
 }
+
+/* Сетка */
 .contact__grid {
     display: flex;
     gap: 20px;
     justify-content: center;
 }
+
 .contact-item {
     flex: 1;
     background: rgba(68, 68, 68, 0.39);
     backdrop-filter: blur(90.7px);
     padding: 50px 45px 67px 45px;
     max-width: 610px;
-    min-height: 600px;
 }
+
 .contact-item h3 {
     font-size: 39px;
     font-weight: var(--font-weight-regular);
     color: var(--color-white);
     margin-bottom: 23px;
 }
+
 .contact-item > p {
     font-size: var(--font-size-md);
     color: var(--color-white-46);
     margin-bottom: 60px;
     max-width: 265px;
 }
+
+/* Форма */
 .form {
     display: flex;
     flex-direction: column;
     gap: 16px;
 }
-.form input, .form textarea {
+
+.form input,
+.form textarea {
     border: none;
     background: none;
     border-bottom: 1px solid var(--color-white-18);
@@ -74,19 +90,24 @@
     color: var(--color-white);
     transition: border-color 0.2s;
 }
-.form input:focus, .form textarea:focus {
+
+.form input:focus,
+.form textarea:focus {
     outline: none;
     border-color: var(--color-primary);
 }
+
 .form textarea {
     min-height: 80px;
     resize: vertical;
 }
+
 .form label {
     font-size: 17px;
     color: var(--color-white-33);
     margin-bottom: -16px;
 }
+
 .btn-submit {
     width: 100%;
     padding: 20px 0;
@@ -94,24 +115,33 @@
     color: var(--color-white);
     border: none;
     cursor: pointer;
-    margin-top: 61px;
-    transition: background 0.2s;
+    transition: background 0.3s ease;
 }
+
 .btn-submit:hover {
     background: var(--color-primary-dark);
 }
+
+/* Телефон с флагом */
 .phone-input-wrapper {
     position: relative;
 }
+
 .phone-input {
     display: flex;
     align-items: center;
     border-bottom: 1px solid var(--color-white-18);
 }
+
+.phone-input:focus-within {
+    border-color: var(--color-primary);
+}
+
 .phone-input__code {
     padding: 17px 0;
     color: var(--color-white);
 }
+
 .phone-input input {
     flex: 1;
     padding: 17px 12px;
@@ -119,6 +149,11 @@
     background: none;
     color: var(--color-white);
 }
+
+.phone-input input:focus {
+    outline: none;
+}
+
 .phone-input__dropdown-btn {
     background: none;
     border: none;
@@ -128,6 +163,8 @@
     gap: 6px;
     margin-right: 6px;
 }
+
+/* Выпадающий список стран */
 .country-dropdown {
     position: absolute;
     top: 100%;
@@ -138,34 +175,45 @@
     overflow: hidden;
     z-index: 100;
 }
+
 .country-dropdown__item {
     display: flex;
     gap: 12px;
     padding: 12px 16px;
     cursor: pointer;
+    transition: background 0.2s;
 }
+
 .country-dropdown__item:hover {
     background: #3a3a3a;
 }
-.custom-checkbox {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    cursor: pointer;
-    position: relative;
-}
+
 .country-dropdown__item span:first-child {
     font-weight: 500;
     color: rgba(255, 255, 255, 0.9);
 }
+
 .country-dropdown__item span:last-child {
     font-size: 14px;
     color: rgba(255, 255, 255, 0.6);
 }
+
+/* Кастомный чекбокс */
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    position: relative;
+}
+
 .custom-checkbox input {
     position: absolute;
     opacity: 0;
+    width: 0;
+    height: 0;
 }
+
 .custom-checkbox__box {
     width: 16px;
     height: 16px;
@@ -175,27 +223,47 @@
     align-items: center;
     justify-content: center;
 }
+
 .custom-checkbox__box svg {
     opacity: 0;
+    transition: opacity 0.2s;
 }
+
 .custom-checkbox input:checked + .custom-checkbox__box svg {
     opacity: 1;
 }
-.custom-checkbox__text , .custom-checkbox__text a {
+
+.custom-checkbox__text,
+.custom-checkbox__text a {
     font-size: var(--font-size-sm);
     color: var(--color-white-44);
+    text-decoration: none;
 }
-/* Ошибки */
-.form .phone-input-wrapper, .form input:not([type="checkbox"]), .form textarea {
-    position: relative;
-    display: block;
-    width: 100%;
+
+.custom-checkbox__text a:hover {
+    text-decoration: underline;
 }
+
+/* Блок с кнопкой и чекбоксом */
+.form__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+/* Контактная информация */
 .contact-info {
     display: flex;
     flex-direction: column;
     gap: 39px;
 }
+
+.contact_item-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .contact_item-info span {
     font-size: 13px;
     font-weight: 500;
@@ -204,19 +272,31 @@
     color: rgba(255, 255, 255, 0.39);
     margin-bottom: 7px;
 }
-.contact_item-info p {
+
+.contact_item-info a {
     font-size: 28px;
     font-weight: 400;
     line-height: 1.35;
-    color: rgba(255, 255, 255, 1);
+    color: var(--color-white);
+    transition: color 0.3s ease;
+    text-decoration: none;
+    cursor: pointer;
 }
-.contact_item-info p:first-child {
+
+.contact_item-info a:first-child {
     text-transform: uppercase;
 }
+
+.contact_item-info a:hover {
+    color: var(--color-primary);
+}
+
+/* Соцсети */
 .social-links {
     display: flex;
     gap: 6px;
 }
+
 .social-link {
     display: flex;
     align-items: center;
@@ -224,7 +304,110 @@
     width: 51px;
     height: 51px;
     background: rgba(255, 255, 255, 0.11);
+    cursor: pointer;
+    transition: background 0.3s ease;
 }
-.phone-input:focus-within {
-    border-color: var(--color-primary);
+
+.social-link:hover {
+    background: var(--color-primary);
+}
+
+/* Ошибки */
+.form .phone-input-wrapper,
+.form input:not([type="checkbox"]),
+.form textarea {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+/* ===== АДАПТИВ ===== */
+
+@media (max-width: 1024px) {
+    .contact-item {
+        padding: 40px 30px;
+    }
+    
+    .contact-item h3 {
+        font-size: 32px;
+    }
+    
+    .contact_item-info a {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact .container {
+        padding: 44px 0;
+    }
+    
+    .contact_info {
+        padding: 0 20px;
+        margin-bottom: 55px;
+        text-align: start;
+    }
+    
+    .contact__label {
+        margin-bottom: 18px;
+    }
+    
+    .contact .section-title {
+        font-size: 38px;
+    }
+    
+    .contact__grid {
+        flex-direction: column-reverse;
+        align-items: center;
+        padding: 0 15px;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .contact-item {
+        width: 100%;
+        min-height: auto;
+        padding: 32px 20px 47px;
+    }
+    
+    .contact-item h3 {
+        font-size: 25px;
+        margin-bottom: 15px;
+    }
+    
+    .contact-item > p {
+        font-size: 15px;
+        margin-bottom: 36px;
+    }
+    
+    .contact-info {
+        gap: 33px;
+    }
+    
+    .contact_item-info span {
+        font-size: 12px;
+        margin-bottom: 7px;
+    }
+    
+    .contact_item-info a {
+        font-size: 25px;
+    }
+    
+    .form {
+        gap: 25px;
+    }
+    
+    .form__bottom {
+        margin-top: 5px;
+        flex-direction: column-reverse;
+    }
+    
+    .btn-submit {
+        margin-top: 0;
+        font-size: 15px;
+    }
+    
+    .custom-checkbox__text {
+        font-size: 13px;
+    }
 }
