@@ -22,7 +22,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     max-width: 1080px;
-    width: 90%;
+    width: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -45,7 +45,6 @@
     transition: transform 0.3s ease;
     overflow-y: auto;
     max-height: 90vh;
-    border-radius: 20px;
 }
 
 .lightbox:not([hidden]) .lightbox__content {
@@ -97,7 +96,6 @@
     width: 100%;
     margin-bottom: 20px;
     overflow: hidden;
-    border-radius: 12px;
     display: flex;
     justify-content: center;
 }
@@ -141,8 +139,7 @@
     transition: opacity 0.3s, border 0.3s;
     padding: 0;
     opacity: 0.42;
-    border: 2px solid transparent;
-    border-radius: 8px;
+    border: 2px solid transparent
 }
 
 .thumbnail img {

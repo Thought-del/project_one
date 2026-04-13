@@ -12,11 +12,11 @@ button {
     cursor: pointer;
 }
 
-/* @media(prefers-reduced-motion: reduce) {
+@media(prefers-reduced-motion: reduce) {
     * {
         transition: none !important;
     }
-} */
+}
 
 /* ul, ol {
     list-style: none;

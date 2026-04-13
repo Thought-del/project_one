@@ -23,7 +23,7 @@
     width: 1px;
     left: clamp(1.875rem, -10.2679rem + 18.9732vw, 12.5rem);
     top: -500px;
-    bottom: clamp(13.125rem, -0.4464rem + 21.2054vw, 25rem);
+    bottom: clamp(22.1875rem, 16.1161rem + 9.4866vh, 27.5rem);
     border: 1px solid rgba(255, 255, 255, 0.18);
     transform: rotate(135.78deg);
     pointer-events: none;

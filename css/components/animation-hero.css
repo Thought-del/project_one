@@ -8,11 +8,6 @@ body {
     position: relative;
     min-height: 100vh;
     overflow: hidden;
-    /* Фон для десктопа */
-    background-image: url('../images/do-animation.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 }
 
 /* 3D анимация (если активна) */
@@ -39,7 +34,7 @@ body {
     z-index: 1;
 }
 
-/* Левая и правая картинки */
+/* Левая и правая картинки (только для мобилок/планшетов) */
 .hero__fallback-left,
 .hero__fallback-right {
     position: absolute;
@@ -87,8 +82,15 @@ body {
     pointer-events: none;
 }
 
+@media (min-width: 1920px) {
+    .hero__3d {
+        transform: scale(1.6);
+    }
+}
+
 /* ===== ПЛАНШЕТЫ И МОБИЛКИ ===== */
 @media (max-width: 1024px) {
+    /* Убираем фоновую картинку на планшетах/мобилках */
     .hero {
         background-image: none;
     }

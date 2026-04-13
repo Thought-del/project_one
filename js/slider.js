@@ -13,6 +13,10 @@ function checkMobile() {
     return isMobile;
 }
 
+function prefersReducedMotion() {
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
 function getSlideWidth() { 
     const slide = slides[0]; 
     return slide ? slide.offsetWidth + SLIDER_CONFIG.gap : 0; 
@@ -42,10 +46,9 @@ function checkAndAddMore() {
 }
 
 function smoothAutoPlay(timestamp) {
-    // На мобилках автопрокрутку отключаем
     if (!isAutoPlaying || reducedMotion || isMobile) { 
         animationId = requestAnimationFrame(smoothAutoPlay); 
-        return; 
+        return;
     }
     if (!lastTimestamp) { 
         lastTimestamp = timestamp; 
@@ -116,7 +119,7 @@ function handleSlideClick(e) {
 }
 
 export function initSlider() {
-    reducedMotion = false; /* window.matchMedia('(prefers-reduced-motion: reduce)').matches; */
+    reducedMotion = prefersReducedMotion();
     checkMobile();
     
     track = document.querySelector(SELECTORS.sliderTrack);
@@ -132,7 +135,6 @@ export function initSlider() {
     updateTransform();
     addMoreSlides();
     
-    // На мобилках автопрокрутку не запускаем
     if (!reducedMotion && !isMobile) {
         startAutoPlay();
     }
@@ -141,10 +143,6 @@ export function initSlider() {
     if (nextBtn) nextBtn.addEventListener('click', nextSlide);
     
     if (sliderContainer) {
-        if (!reducedMotion && !isMobile) {
-            sliderContainer.addEventListener('mouseenter', stopAutoPlay);
-            sliderContainer.addEventListener('mouseleave', startAutoPlay);
-        }
         sliderContainer.addEventListener('click', handleSlideClick);
     }
     
@@ -154,7 +152,6 @@ export function initSlider() {
         slideWidth = getSlideWidth();
         updateTransform();
         
-        // Если изменилось с десктопа на мобилку или наоборот
         if (wasMobile !== isMobile) {
             if (isMobile || reducedMotion) {
                 stopAutoPlay();

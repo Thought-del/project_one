@@ -173,7 +173,7 @@
 
 .technologies__frame {
     position: absolute;
-    top: clamp(21.875rem, 38.3036rem + -25.6696vw, 7.5rem);
+    top: 5rem;
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
@@ -197,7 +197,7 @@
 }
 
 /* ===== ПЛАНШЕТЫ (768px - 1024px) ===== */
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1023px) {
     .technologies__image-main {
         min-height: 100vh;
     }
@@ -347,6 +347,7 @@
     
     .technologies__frame {
         width: 95%;
+        top: 10%
     }
     
     .technologies__image-overlay {
