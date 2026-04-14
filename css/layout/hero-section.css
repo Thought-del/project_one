@@ -200,25 +200,78 @@
     z-index: 6;
 }
 
-/* ===== ПЛАНШЕТЫ (768px - 1024px) ===== */
-@media (min-width: 768px) and (max-width: 1024px) {
-    #women-do {
-        width: clamp(30rem, 40vw, 50rem);
+@media (min-width: 1440px) and (max-width: 1600px) {
+    .hero-line-diagonal {
+        bottom: 23%;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1440px) {
+    .hero-line-diagonal {
+        bottom: 31%;
+        right: 0;
+        left: 10%;
     }
 
-    .hero-line-diagonal, .hero-line-horizontal, .hero-line-vertical {
+    .hero-line-horizontal {
+        top: 50%;
+    }
+}
+
+/* ===== ПЛАНШЕТЫ (768px - 1024px) ===== */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .hero {
+        min-height: 60vh;
+    }
+
+    .hero__3d-fallback {
+        display: block;
+        min-height: 60vh;
+    }
+    
+    #women-do {
+        width: clamp(20rem, 25vw, 35rem);
+    }
+    
+    .hero-line-diagonal,
+    .hero-line-horizontal,
+    .hero-line-vertical {
         display: none;
+    }
+    
+    .hero__content {
+        left: clamp(1rem, 5vw, 60px);
+        bottom: 50%;
+        transform: translateY(50%);
+        width: min(300px, 35vw);
+    }
+    
+    .hero__vr {
+        right: clamp(1rem, 5vw, 60px);
+        bottom: 50%;
+        transform: translateY(50%);
+        width: min(200px, 25vw);
+    }
+    
+    .hero__title {
+        font-size: 48px;
+    }
+    
+    .hero__text {
+        font-size: 14px;
     }
 }
 
 /* ===== МОБИЛКИ ===== */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .hero {
         min-height: 135vh;
         padding: 0 20px;
     }
-
-    .hero-line-diagonal, .hero-line-horizontal, .hero-line-vertical {
+    
+    .hero-line-diagonal,
+    .hero-line-horizontal,
+    .hero-line-vertical {
         display: none;
     }
     
@@ -233,16 +286,19 @@
     
     .hero__content {
         position: absolute;
-        left: 0;
         bottom: auto;
+        left: 0;
+        right: 0;
+        top: 0;
         z-index: 999;
-        padding: 100px 20px 0;
+        padding: 100px 40px 0;
         background: var(--color-white-04);
         backdrop-filter: blur(40.4px);
         width: 100%;
         display: flex;
-        align-items:center;
+        align-items: center;
         justify-content: center;
+        max-width: none;
     }
     
     .hero__title {
@@ -266,5 +322,24 @@
     
     #women-do {
         width: 83vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero, .hero__3d-fallback {
+        min-height: 115vh;
+    }
+
+    .hero__title {
+        font-size: 32px;
+    }
+    
+    .hero__text {
+        font-size: 13px;
+    }
+    
+    .hero__btn {
+        padding: 14px 20px;
+        font-size: 13px;
     }
 }

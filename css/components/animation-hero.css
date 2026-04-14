@@ -89,8 +89,7 @@ body {
 }
 
 /* ===== ПЛАНШЕТЫ И МОБИЛКИ ===== */
-@media (max-width: 1024px) {
-    /* Убираем фоновую картинку на планшетах/мобилках */
+@media (max-width: 1023px) {
     .hero {
         background-image: none;
     }
@@ -101,10 +100,15 @@ body {
     
     .hero__3d-fallback {
         display: block;
+        min-height: 60vh;
+    }
+
+    .hero {
+        min-height: 60vh;
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .hero {
         min-height: 135vh;
     }
@@ -115,5 +119,33 @@ body {
     
     #women-do {
         width: 83vh;
+    }
+}
+
+/* ===== ДОПОЛНИТЕЛЬНЫЙ АДАПТИВ ДЛЯ ПЛАНШЕТОВ ===== */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .hero {
+        min-height: 60vh;
+    }
+
+    .hero__3d-fallback {
+        display: block;
+        min-height: 60vh;
+    }  
+    
+    #women-do {
+        width: 70vw;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1440px) {
+    #women-do {
+        width: 55vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero, .hero__3d-fallback {
+        min-height: 115vh;
     }
 }

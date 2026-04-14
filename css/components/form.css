@@ -323,7 +323,13 @@
 
 /* ===== АДАПТИВ ===== */
 
-@media (max-width: 1024px) {
+@media (max-width: 1440px) {
+    .contact .container {
+        padding: 80px clamp(1rem, 8vw, 200px) 80px clamp(1rem, 8vw, 200px);
+    }
+}
+
+@media (max-width: 1023px) {
     .contact-item {
         padding: 40px 30px;
     }
@@ -335,9 +341,13 @@
     .contact_item-info a {
         font-size: 24px;
     }
+    
+    .contact .container {
+        padding: 60px clamp(1rem, 6vw, 100px);
+    }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .contact .container {
         padding: 44px 0;
     }
@@ -360,8 +370,6 @@
         flex-direction: column-reverse;
         align-items: center;
         padding: 0 15px;
-        align-items: center;
-        justify-content: center;
     }
     
     .contact-item {
@@ -400,6 +408,7 @@
     .form__bottom {
         margin-top: 5px;
         flex-direction: column-reverse;
+        gap: 30px;
     }
     
     .btn-submit {
@@ -409,5 +418,24 @@
     
     .custom-checkbox__text {
         font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact .section-title {
+        font-size: 28px;
+    }
+    
+    .contact-item h3 {
+        font-size: 22px;
+    }
+    
+    .contact_item-info a {
+        font-size: 20px;
+    }
+    
+    .btn-submit {
+        font-size: 14px;
+        padding: 16px 0;
     }
 }

@@ -6,6 +6,7 @@
     overflow: hidden;
 }
 
+/* Вертикальная линия 1 */
 .tech-line-vertical {
     position: absolute;
     width: 1px;
@@ -196,45 +197,113 @@
     display: none;
 }
 
-/* ===== ПЛАНШЕТЫ (768px - 1024px) ===== */
-@media (min-width: 768px) and (max-width: 1023px) {
-    .technologies__image-main {
-        min-height: 100vh;
+/* ===== АДАПТИВ ДЛЯ ЛИНИЙ И ВСЕЙ СЕКЦИИ ===== */
+
+@media (min-width: 1024px) and (max-width: 1280px) {
+    .technologies__container {
+        display: flex;
+        flex-direction: column;
     }
     
-    .technologies__image-main img {
-        min-height: 1200px;
+    .technologies__title {
+        max-width: 70%;
+    }
+    
+    .technologies__description p:last-child {
+        max-width: 70%;
+        margin-bottom: 0;
+    }
+    
+    .technologies__content,
+    .technologies__description {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .technologies__grid {
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .tech-card {
+        max-width: 50%;
     }
     
     .technologies__image-overlay {
-        width: min(150vh, 1250px);
-        bottom: 0;
+        width: 95%;
+    }
+    
+    /* Линии на этом разрешении */
+    .tech-line-horizontal {
+        top: 25%;
+    }
+    
+    .tech-line-vertical_4 {
+        left: 53%;
+        top: 25%;
+    }
+
+    .technologies__image-main img {
+        min-height: 1400px;
+    }
+}
+
+/* ===== ПЛАНШЕТЫ (768px - 1024px) ===== */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .technologies {
+        min-height: auto;
+    }
+    
+    .technologies__container {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .technologies__image-main {
+        min-height: 60vh;
+    }
+    
+    .technologies__image-main img {
+        min-height: 500px;
+    }
+    
+    .technologies__image-overlay {
+        width: min(80vh, 700px);
     }
     
     .technologies__frame {
-        width: 90%;
-        top: 10%;
+        width: 70%;
+        top: max(8%, 180px);
     }
-
+    
+    .technologies__grid {
+        gap: 40px;
+    }
+    
+    .technologies__content {
+        padding: 60px 40px 80px clamp(1rem, 5vw, 80px);
+    }
+    
+    /* Линии на планшетах */
     .tech-line-vertical {
-        left: 20px
+        left: 20px;
     }
-
-    .tech-line-horizontal {
-        top: 590px;
-    }
-
+    
     .tech-line-vertical_4 {
-        transform: rotate(90deg);
-        left: 0;
-        right: 0;
-        bottom: none;
-        top: 40px;
+        left: 300px;
+        top: 30%;
+    }
+    
+    .tech-line-horizontal {
+        top: 30%;
     }
 }
 
 /* ===== МОБИЛКИ ===== */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .technologies__container {
         display: flex;
         flex-direction: column;
@@ -242,10 +311,10 @@
     
     .tech__vr {
         position: absolute;
-        top: 133%;
+        top: 140%;
         left: 50%;
         transform: translateX(-50%);
-        width: 90%;
+        width: 95%;
         z-index: 20;
         display: flex;
         flex-direction: column;
@@ -346,12 +415,12 @@
     }
     
     .technologies__frame {
-        width: 95%;
-        top: 10%
+        width: 80%;
+        top: 10%;
     }
     
     .technologies__image-overlay {
-        width: 100%;
+        width: 65%;
         bottom: 0;
     }
     
@@ -376,16 +445,62 @@
         letter-spacing: -0.03em;
         line-height: 1.41;
     }
-
+    
+    /* Линии на мобилках */
+    .tech-line-vertical {
+        left: 15px;
+    }
+    
+    .tech-line-vertical_4 {
+        left: 50%;
+        right: 50%;
+        transform: rotate(90deg);
+        bottom: 33%;
+    }
+    
     .tech-line-horizontal {
-        top: 727px;
+        top: 38%;
+    }
+}
+
+@media (max-width: 480px) {
+    .technologies__title {
+        font-size: 32px;
+    }
+    
+    .tech-card__title {
+        font-size: 20px;
+    }
+    
+    .tech-card__text {
+        font-size: 13px;
+    }
+    
+    .technologies__content {
+        padding: 0 20px 50px;
+    }
+    
+    .technologies__image-overlay {
+        width: 90%;
+    }
+    
+    /* Линии на маленьких экранах */
+    .tech-line-vertical {
+        left: 10px;
+    }
+    
+    .tech-line-horizontal {
+        top: min(40%, 685px);
+    }
+    
+    .tech-line-vertical_4 {
+        top: 720px;
     }
 
-    .tech-line-vertical_4 {
-        transform: rotate(90deg);
-        left: 0;
-        right: 0;
-        bottom: none;
-        top: 190px;
+    .tech__vr {
+        top: 118%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 95%;
     }
 }

@@ -47,9 +47,9 @@
     overflow: hidden;
     cursor: pointer;
     transition: flex 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    aspect-ratio: 410 / 717; /* Сохраняем пропорции картинки */
-    min-height: 800px;
-    max-height: 800px;
+    aspect-ratio: 410 / 717;
+    min-height: 600px;
+    max-height: 600px;
 }
 
 .why-item:hover {
@@ -133,20 +133,30 @@
 
 /* ===== АДАПТИВ ===== */
 
-/* Планшеты и маленькие десктопы */
-@media (max-width: 1024px) {
+@media (max-width: 1440px) {
+    .why-item {
+        min-height: 550px;
+        max-height: 550px;
+    }
+}
+
+@media (max-width: 1023px) {
     .why-item {
         aspect-ratio: auto;
-        min-height: 600px;
-        max-height: 600px;
+        min-height: 500px;
+        max-height: 500px;
     }
     
     .why-item:hover {
         flex: 1.5;
     }
+    
+    .why-us .container {
+        padding: 60px clamp(1rem, 6vw, 100px) 150px clamp(1rem, 6vw, 100px);
+    }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .why-us .container {
         padding: 39px 20px 80px;
     }
@@ -176,7 +186,7 @@
         max-height: 400px;
         aspect-ratio: auto;
     }
-
+    
     .why-item img {
         width: 100%;
         min-height: 400px;
@@ -216,5 +226,19 @@
     
     .why-item:hover .item-info_bottom {
         bottom: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .why-info .section-title {
+        font-size: 28px;
+    }
+    
+    .item-info p {
+        font-size: 24px;
+    }
+    
+    .why-item__desc {
+        font-size: 13px;
     }
 }
