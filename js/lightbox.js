@@ -5,39 +5,80 @@ import { SELECTORS } from './constants.js';
 let lightbox;
 let overlay;
 let closeBtn;
-let thumbnails;
+let thumbnailsContainer;
 let lightboxImage;
 let lightboxTitle;
 let lightboxDesc;
 
-// Массив больших изображений для лайтбокса
-const largeImages = {
-    1: 'images/Rectangle 148.png',
-    2: 'images/kfd.png',
-    3: 'images/kfd2.png',
-    4: 'images/kfd3.png',
-    5: 'images/kfd4.png'
+// Данные для миниатюр каждого слайда
+const slidesThumbnails = {
+    1: ['images/slide1/B3389237-FC61-4BE2-9C70-F770AFFCBB6A.jpeg', 'images/slide1/15937D36-A714-401F-9669-D376D81D1FB8.jpeg', 'images/slide1/50451211-25D1-4013-91A5-76D34A647446.jpeg', 'images/slide1/C3B7059A-40FA-498D-BCC9-DB35BFA20F0C.jpeg', 'images/slide1/FAE73CFC-23E3-4A2D-A5E3-642E78DB4792.jpeg'],
+    2: ['images/slide2/F7332D93-1E75-46B7-8DAC-5AB401679719.jpeg', 'images/slide2/62A84D71-ADEA-41CC-AF8A-A454C45DE491.jpeg', 'images/slide2/A146B87C-D0CE-47D0-AB19-4FE3CFD725C0.jpeg', 'images/slide2/F5E7F8E7-D2C2-46CD-964D-C8A9F6A1615F.jpeg'],
+    3: ['images/slide3/A61C5EAE-55E8-402D-B2C9-477D9BD56970.jpeg', 'images/slide3/3F611454-05D6-4A17-996A-D0225258A8B4.jpeg', 'images/slide3/A50D51A1-2285-4256-B907-17003B764BBF.jpeg', 'images/slide3/AD2BAD1C-2058-4420-8439-3F83D7567C64.jpeg', 'images/slide3/CBBF3A0E-A4EA-46EC-8889-6AA639074F30.jpeg', 'images/slide3/DF72658A-8FAD-49E9-8C0C-CB43D1AC0C59.jpeg', 'images/slide3/F178C607-A4A0-47A8-B4B0-08D51486BBFC.jpeg'],
+    4: ['images/slide4/42363671-F6BA-4B08-865A-C7A85B36DC68.jpeg', 'images/slide4/3B48DA09-0D4E-4038-8EBB-B75E2FF3EC33.jpeg', 'images/slide4/76A17635-906A-4E02-86A4-8CEADF678445.jpeg', 'images/slide4/98CD2BD8-54D5-4C78-87B9-79E595DB2F47.jpeg', 'images/slide4/B68F0B31-533C-4A75-AB78-89DA518F2610.jpeg', 'images/slide4/C21DD57D-F065-4141-858D-8792A9D264F7.jpeg']
 };
 
-function openLightbox(title, desc, imageKey) {
-    if (lightboxTitle && title) lightboxTitle.textContent = title;
-    if (lightboxDesc && desc) lightboxDesc.textContent = desc;
-    
-    if (imageKey && lightboxImage && largeImages[imageKey]) {
-        lightboxImage.src = largeImages[imageKey];
-    } else if (thumbnails.length > 0 && lightboxImage) {
-        const firstThumbKey = thumbnails[0].dataset.thumbnail;
-        lightboxImage.src = largeImages[firstThumbKey] || largeImages[1];
-        setActiveThumbnail(thumbnails[0]);
+function renderThumbnails(thumbnailsArray, activeIndex = 0) {
+    if (!thumbnailsContainer) {
+        console.warn('thumbnailsContainer не найден');
+        return;
     }
+    thumbnailsContainer.innerHTML = '';
+    
+    thumbnailsArray.forEach((src, idx) => {
+        const thumbBtn = document.createElement('button');
+        thumbBtn.type = 'button';
+        thumbBtn.className = 'thumbnail';
+        thumbBtn.dataset.index = idx;
+        
+        const thumbImg = document.createElement('img');
+        thumbImg.src = src;
+        thumbImg.width = 186;
+        thumbImg.height = 123;
+        thumbImg.alt = `Интерьер ${idx + 1}`;
+        thumbImg.loading = 'lazy';
+        
+        thumbBtn.appendChild(thumbImg);
+        
+        thumbBtn.addEventListener('click', () => {
+            if (lightboxImage) lightboxImage.src = src;
+            setActiveThumbnail(thumbBtn);
+        });
+        
+        thumbnailsContainer.appendChild(thumbBtn);
+    });
+    
+    const thumbs = thumbnailsContainer.querySelectorAll('.thumbnail');
+    if (thumbs[activeIndex]) setActiveThumbnail(thumbs[activeIndex]);
+}
+
+function setActiveThumbnail(activeThumb) {
+    const allThumbs = thumbnailsContainer?.querySelectorAll('.thumbnail');
+    allThumbs?.forEach(thumb => thumb.classList.remove('active'));
+    activeThumb.classList.add('active');
+}
+
+function openLightbox(slideIndex, bigImageSrc, title, desc) {
+    if (lightboxTitle) lightboxTitle.textContent = title;
+    if (lightboxDesc) lightboxDesc.textContent = desc;
+    if (lightboxImage && bigImageSrc) lightboxImage.src = bigImageSrc;
+    
+    // Для клонов индекс может быть больше 4, приводим к оригинальному
+    let originalIndex = slideIndex;
+    if (slideIndex > 4) {
+        originalIndex = ((slideIndex - 1) % 4) + 1;
+    }
+    
+    const thumbnailsArray = slidesThumbnails[originalIndex] || [];
+    renderThumbnails(thumbnailsArray);
     
     if (lightbox) lightbox.removeAttribute('hidden');
     if (overlay) overlay.removeAttribute('hidden');
     document.body.style.overflow = 'hidden';
 }
 
-function openLightboxFromSlide(title, desc, imageKey) {
-    openLightbox(title, desc, imageKey);
+function openLightboxFromSlide(title, desc, bigImageSrc, slideIndex) {
+    openLightbox(slideIndex, bigImageSrc, title, desc);
 }
 
 function closeLightbox() {
@@ -46,44 +87,17 @@ function closeLightbox() {
     document.body.style.overflow = '';
 }
 
-function setActiveThumbnail(activeThumb) {
-    thumbnails.forEach(thumb => {
-        thumb.classList.remove('active');
-    });
-    activeThumb.classList.add('active');
-}
-
 function initLightbox() {
     lightbox = document.querySelector(SELECTORS.lightbox);
     overlay = document.querySelector(SELECTORS.lightboxOverlay);
     closeBtn = document.querySelector(SELECTORS.lightboxClose);
-    thumbnails = document.querySelectorAll(SELECTORS.thumbnails);
+    thumbnailsContainer = document.querySelector('.lightbox-thumbnails');
     
     if (!lightbox) return;
     
     lightboxImage = lightbox.querySelector('.lightbox-image img');
     lightboxTitle = lightbox.querySelector('h2');
     lightboxDesc = lightbox.querySelector('p');
-    
-    thumbnails.forEach(thumb => {
-        thumb.addEventListener('click', () => {
-            const imageKey = thumb.dataset.thumbnail;
-            const img = thumb.querySelector('img');
-            const title = lightboxTitle?.textContent || '';
-            const desc = lightboxDesc?.textContent || '';
-            
-            if (imageKey && lightboxImage && largeImages[imageKey]) {
-                lightboxImage.src = largeImages[imageKey];
-                setActiveThumbnail(thumb);
-                if (lightboxTitle) lightboxTitle.textContent = title;
-                if (lightboxDesc) lightboxDesc.textContent = desc;
-            } else if (img && lightboxImage) {
-                // fallback если нет largeImages
-                lightboxImage.src = img.src;
-                setActiveThumbnail(thumb);
-            }
-        });
-    });
     
     if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
     if (overlay) overlay.addEventListener('click', closeLightbox);

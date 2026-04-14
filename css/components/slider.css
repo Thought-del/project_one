@@ -72,13 +72,11 @@
     transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* Слайд */
 .slide {
-    flex: 0 0 762px;
+    flex: 0 0 620px;
     position: relative;
 }
 
-/* Обёртка картинки для затемнения */
 .slide__image-wrapper {
     position: relative;
     cursor: pointer;
@@ -86,12 +84,14 @@
 }
 
 .slide__image-wrapper img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 620 / 450;
     display: block;
     object-fit: cover;
     transition: transform 0.3s ease;
 }
 
-/* Затемнение при наведении */
 .slide__image-wrapper::after {
     content: '';
     position: absolute;
@@ -110,7 +110,6 @@
     opacity: 1;
 }
 
-/* SVG иконка */
 .slide__icon {
     position: absolute;
     top: 50%;
@@ -126,7 +125,6 @@
     opacity: 1;
 }
 
-/* Информация о слайде */
 .slide-info {
     margin-top: 9px;
 }

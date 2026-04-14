@@ -4,16 +4,19 @@ export const SELECTORS = {
     sliderPrev: '[data-slider-prev]',
     sliderNext: '[data-slider-next]',
     sliderContainer: '[data-slider-container]',
+    
     lightbox: '[data-lightbox]',
     lightboxOverlay: '[data-lightbox-overlay]',
     lightboxClose: '[data-lightbox-close]',
-    thumbnails: '[data-thumbnail]',
+    lightboxThumbnails: '.lightbox-thumbnails',
+    
     form: '[data-form]',
     formSubmit: '[data-form-submit]',
     formName: '#form-name',
     formPhone: '#form-phone',
     formMessage: '#form-message',
     formConsent: '#form-consent',
+    
     burger: '[data-mobile-open]',
     mobileMenu: '[data-mobile-menu]',
     mobileClose: '[data-mobile-close]',

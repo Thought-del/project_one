@@ -111,11 +111,23 @@ function prevSlide() {
 }
 
 function handleSlideClick(e) {
+    // Ищем .slide среди родителей, даже если кликнули по иконке или затемнению
     const slide = e.target.closest('.slide');
     if (!slide) return;
+    
+    // Получаем индекс слайда (по порядку в DOM)
+    const slides = document.querySelectorAll(SELECTORS.slides);
+    const slideIndex = Array.from(slides).indexOf(slide) + 1;
+    
+    // Получаем главное изображение
+    const imgWrapper = slide.querySelector('.slide__image-wrapper');
+    const img = imgWrapper?.querySelector('img');
+    const imageSrc = img ? img.src : '';
+    
     const title = slide.querySelector('h3')?.textContent || '';
     const desc = slide.querySelector('p')?.textContent || '';
-    openLightboxFromSlide(title, desc);
+    
+    openLightboxFromSlide(title, desc, imageSrc, slideIndex);
 }
 
 export function initSlider() {
