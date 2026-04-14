@@ -3,7 +3,8 @@
 import { initSlider } from './slider.js';
 import { initLightbox } from './lightbox.js';
 import { initFormValidation } from './validation.js';
-import { initCountrySelector } from './country-selector.js';
+import { initCountrySelector } from './country-selector.js'
+import { initMenu } from './menu.js';
 
 function isMobileOrTablet() {
     return window.innerWidth <= 1024;
@@ -55,6 +56,7 @@ function init() {
     initLightbox();
     initFormValidation();
     initCountrySelector();
+    initMenu();
     
     window.addEventListener('resize', () => {
         init3D();

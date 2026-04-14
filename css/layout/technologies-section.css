@@ -311,7 +311,7 @@
     
     .tech__vr {
         position: absolute;
-        top: 140%;
+        top: 135%;
         left: 50%;
         transform: translateX(-50%);
         width: 95%;
