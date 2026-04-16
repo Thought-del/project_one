@@ -25,6 +25,8 @@ export const SELECTORS = {
 };
 export const SLIDER_CONFIG = {
     speed: 5,
+    autoPlayInterval: 3000,           // десктоп: 3 секунды
+    mobileAutoPlayInterval: 4000,      // мобилка: 4 секунды
     fastTransitionDuration: 200,
     normalTransitionDuration: 500,
     visibleSlidesDesktop: 2,

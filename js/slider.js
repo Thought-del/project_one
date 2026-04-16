@@ -3,7 +3,9 @@
 import { SELECTORS, SLIDER_CONFIG } from './constants.js';
 import { openLightboxFromSlide } from './lightbox.js';
 
-let currentPosition = 0, animationId = null, lastTimestamp = 0, isAutoPlaying = true;
+let currentIndex = 0;
+let autoInterval = null;
+let isAutoPlaying = true;
 let track, slides, prevBtn, nextBtn, slideWidth = 0, sliderContainer;
 let reducedMotion = false;
 let isMobile = false;
@@ -22,6 +24,21 @@ function getSlideWidth() {
     return slide ? slide.offsetWidth + SLIDER_CONFIG.gap : 0; 
 }
 
+function updateTransform(instant = false) {
+    if (!track) return;
+    
+    const offset = -currentIndex * slideWidth;
+    
+    if (instant) {
+        track.style.transition = 'none';
+        track.style.transform = `translateX(${offset}px)`;
+        track.offsetHeight;
+        track.style.transition = `transform ${SLIDER_CONFIG.normalTransitionDuration}ms cubic-bezier(0.25, 0.46, 0.45, 0.94)`;
+    } else {
+        track.style.transform = `translateX(${offset}px)`;
+    }
+}
+
 function addMoreSlides() {
     if (!track || slides.length === 0) return;
     const originalSlides = Array.from(document.querySelectorAll(SELECTORS.slides + ':not([data-clone])'));
@@ -34,96 +51,64 @@ function addMoreSlides() {
     slideWidth = getSlideWidth();
 }
 
-function updateTransform() { 
-    if (track) track.style.transform = `translateX(${currentPosition}px)`; 
-}
-
-function checkAndAddMore() {
-    const totalWidth = slides.length * slideWidth;
-    const remainingWidth = totalWidth + currentPosition;
-    const threshold = SLIDER_CONFIG.visibleSlidesDesktop * slideWidth * 2;
-    if (remainingWidth < threshold) addMoreSlides();
-}
-
-function smoothAutoPlay(timestamp) {
-    if (!isAutoPlaying || reducedMotion || isMobile) { 
-        animationId = requestAnimationFrame(smoothAutoPlay); 
-        return;
-    }
-    if (!lastTimestamp) { 
-        lastTimestamp = timestamp; 
-        animationId = requestAnimationFrame(smoothAutoPlay); 
-        return; 
-    }
-    const delta = Math.min(timestamp - lastTimestamp, 50);
-    const step = SLIDER_CONFIG.speed * (delta / 16.67);
-    currentPosition -= step;
-    checkAndAddMore();
-    updateTransform();
-    lastTimestamp = timestamp;
-    animationId = requestAnimationFrame(smoothAutoPlay);
-}
-
-function startAutoPlay() { 
-    if (reducedMotion || isMobile) return;
-    if (animationId) cancelAnimationFrame(animationId); 
-    isAutoPlaying = true; 
-    lastTimestamp = 0; 
-    animationId = requestAnimationFrame(smoothAutoPlay); 
-}
-
-function stopAutoPlay() { 
-    isAutoPlaying = false; 
-}
-
 function nextSlide() {
-    if (reducedMotion || isMobile) {
-        currentPosition -= slideWidth;
-        checkAndAddMore();
-        updateTransform();
-        return;
+    const maxIndex = slides.length - SLIDER_CONFIG.visibleSlidesDesktop;
+    if (currentIndex < maxIndex) {
+        currentIndex++;
+    } else {
+        currentIndex = 0;
     }
-    stopAutoPlay();
-    currentPosition -= slideWidth;
-    checkAndAddMore();
-    track.style.transition = `transform ${SLIDER_CONFIG.fastTransitionDuration}ms cubic-bezier(0.25, 0.46, 0.45, 0.94)`;
     updateTransform();
-    setTimeout(() => { 
-        track.style.transition = `transform ${SLIDER_CONFIG.normalTransitionDuration}ms linear`; 
-        startAutoPlay(); 
-    }, SLIDER_CONFIG.fastTransitionDuration);
 }
 
 function prevSlide() {
-    if (reducedMotion || isMobile) {
-        currentPosition += slideWidth;
-        updateTransform();
-        return;
+    const maxIndex = slides.length - SLIDER_CONFIG.visibleSlidesDesktop;
+    if (currentIndex > 0) {
+        currentIndex--;
+    } else {
+        currentIndex = maxIndex;
     }
-    stopAutoPlay();
-    currentPosition += slideWidth;
-    track.style.transition = `transform ${SLIDER_CONFIG.fastTransitionDuration}ms cubic-bezier(0.25, 0.46, 0.45, 0.94)`;
     updateTransform();
-    setTimeout(() => { 
-        track.style.transition = `transform ${SLIDER_CONFIG.normalTransitionDuration}ms linear`; 
-        startAutoPlay(); 
+}
+
+function startAutoPlay() {
+    if (autoInterval) clearInterval(autoInterval);
+    if (reducedMotion) return;
+    
+    autoInterval = setInterval(() => {
+        if (isAutoPlaying) {
+            nextSlide();
+        }
+    }, isMobile ? SLIDER_CONFIG.mobileAutoPlayInterval : SLIDER_CONFIG.autoPlayInterval);
+}
+
+function stopAutoPlay() {
+    isAutoPlaying = false;
+    if (autoInterval) clearInterval(autoInterval);
+}
+
+function resumeAutoPlay() {
+    isAutoPlaying = true;
+    startAutoPlay();
+}
+
+function handleButtonClick(callback) {
+    stopAutoPlay();
+    callback();
+    setTimeout(() => {
+        startAutoPlay();
     }, SLIDER_CONFIG.fastTransitionDuration);
 }
 
 function handleSlideClick(e) {
-    // Ищем .slide среди родителей, даже если кликнули по иконке или затемнению
     const slide = e.target.closest('.slide');
     if (!slide) return;
     
-    // Получаем индекс слайда (по порядку в DOM)
     const slides = document.querySelectorAll(SELECTORS.slides);
     const slideIndex = Array.from(slides).indexOf(slide) + 1;
     
-    // Получаем главное изображение
-    const imgWrapper = slide.querySelector('.slide__image-wrapper');
-    const img = imgWrapper?.querySelector('img');
+    const img = slide.querySelector('.slide__image-wrapper img');
     const imageSrc = img ? img.src : '';
-    
     const title = slide.querySelector('h3')?.textContent || '';
     const desc = slide.querySelector('p')?.textContent || '';
     
@@ -143,33 +128,23 @@ export function initSlider() {
     if (!track || slides.length === 0) return;
     
     slideWidth = getSlideWidth();
-    currentPosition = 0;
-    updateTransform();
+    updateTransform(true);
     addMoreSlides();
+    updateTransform(true);
     
-    if (!reducedMotion && !isMobile) {
-        startAutoPlay();
-    }
+    startAutoPlay();
     
-    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+    if (prevBtn) prevBtn.addEventListener('click', () => handleButtonClick(prevSlide));
+    if (nextBtn) nextBtn.addEventListener('click', () => handleButtonClick(nextSlide));
     
     if (sliderContainer) {
         sliderContainer.addEventListener('click', handleSlideClick);
+        sliderContainer.addEventListener('mouseenter', stopAutoPlay);
+        sliderContainer.addEventListener('mouseleave', startAutoPlay);
     }
     
     window.addEventListener('resize', () => { 
-        const wasMobile = isMobile;
-        checkMobile();
         slideWidth = getSlideWidth();
-        updateTransform();
-        
-        if (wasMobile !== isMobile) {
-            if (isMobile || reducedMotion) {
-                stopAutoPlay();
-            } else {
-                startAutoPlay();
-            }
-        }
+        updateTransform(true);
     });
 }

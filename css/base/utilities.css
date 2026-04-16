@@ -8,3 +8,9 @@
     clip: rect(0, 0, 0, 0);
     border: 0;
 }
+
+@media (max-width: 768px) {
+    #section_title {
+        letter-spacing: -0.03em;
+    }
+}
