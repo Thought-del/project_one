@@ -57,6 +57,7 @@
     backdrop-filter: blur(90.7px);
     padding: 50px 45px 67px 45px;
     max-width: 610px;
+    -webkit-backdrop-filter: blur(90.7px);
 }
 
 .contact-item h3 {

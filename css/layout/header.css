@@ -8,6 +8,7 @@
     background: var(--color-white-04);
     backdrop-filter: blur(40.4px);
     z-index: 1000;
+    -webkit-backdrop-filter: blur(40.4px);
 }
 
 .header__container {
