@@ -6,7 +6,6 @@
     overflow: hidden;
 }
 
-/* Вертикальная линия 1 */
 .tech-line-vertical {
     position: absolute;
     width: 1px;
@@ -23,7 +22,7 @@
     position: absolute;
     width: 1px;
     left: clamp(18.75rem, 4.4643rem + 22.3214vw, 31.25rem);
-    top: 660px;
+    top: 440px;
     bottom: 0;
     border: 1px solid #303030;
     transform: rotate(180deg);
@@ -35,7 +34,7 @@
     position: absolute;
     height: 1px;
     left: 0;
-    top: 660px;
+    top: 440px;
     right: 0;
     border: 1px solid #303030;
     transform: rotate(180deg);
@@ -47,7 +46,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 100%;
-    min-height: 100vh;
+    margin: 0;
+    max-width: none;
 }
 
 .technologies__content {
@@ -70,14 +70,14 @@
     font-size: clamp(2rem, 6vw, 66px);
     font-weight: var(--font-weight-regular);
     line-height: 0.9;
-    color: var(--color-white);
+    color: var(--color-white) !important;
     letter-spacing: -0.06em;
     margin-bottom: 50px;
     max-width: 550px;
 }
 
 .technologies__description {
-    margin-bottom: clamp(2rem, 12vw, 185px);
+    margin-bottom: clamp(1rem, 5vw, 50px);
 }
 
 .technologies__description p {
@@ -124,7 +124,6 @@
     max-width: 250px;
 }
 
-/* Медиа часть */
 .technologies__media {
     position: relative;
     overflow: hidden;
@@ -132,11 +131,9 @@
 
 .technologies__image-main {
     position: relative;
-    min-height: 100vh;
     z-index: 5;
 }
 
-/* Затемнение снизу */
 .technologies__image-main::after {
     content: '';
     position: absolute;
@@ -152,7 +149,6 @@
 .technologies__image-main img {
     width: 100%;
     height: auto;
-    min-height: 1200px;
     display: block;
     object-fit: cover;
 }
@@ -162,7 +158,8 @@
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: min(100vh, 1000px);
+    width: 90%;
+    max-width: 1000px;
     z-index: 7;
 }
 
@@ -198,23 +195,118 @@
     display: none;
 }
 
-/* ===== АДАПТИВ ДЛЯ ЛИНИЙ И ВСЕЙ СЕКЦИИ ===== */
+/* Десктоп */
+@media (min-width: 1024px) {
+    .technologies__container {
+        min-height: auto;
+        height: 100vh;
+        height: 100dvh;
+        max-height: 900px;
+        align-items: stretch;
+    }
 
+    .technologies__content {
+        padding-top: clamp(1rem, 3vw, 60px);
+        padding-bottom: clamp(1rem, 3vw, 60px);
+        justify-content: center;
+    }
+
+    .technologies__label {
+        font-size: 14px;
+        padding: 8px 14px;
+        margin-bottom: 20px;
+    }
+
+    .technologies__title {
+        font-size: clamp(2.5rem, 5vw, 56px);
+        margin-bottom: 20px;
+        max-width: 500px;
+    }
+
+    .technologies__description {
+        margin-bottom: 20px;
+    }
+
+    .technologies__description p {
+        font-size: 15px;
+        margin-bottom: 12px;
+        max-width: 480px;
+    }
+
+    .technologies__grid {
+        gap: clamp(1rem, 5vw, 80px);
+    }
+
+    .tech-card {
+        max-width: 260px;
+    }
+
+    .tech-card__icon {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 24px;
+    }
+
+    .tech-card__title {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    .tech-card__text {
+        font-size: 14px;
+    }
+
+    .technologies__media {
+        height: 100%;
+        display: flex;
+        align-items: flex-end;
+    }
+
+    .technologies__image-main {
+        height: 100%;
+        width: 100%;
+    }
+
+    .technologies__image-main img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center top;
+    }
+
+    .technologies__image-overlay {
+        width: 65%;
+        max-width: 850px;
+    }
+
+    .technologies__frame {
+        top: 3rem;
+        max-width: 650px;
+    }
+}
+
+/* Узкие десктопы */
 @media (min-width: 1024px) and (max-width: 1280px) {
     .technologies__container {
         display: flex;
         flex-direction: column;
+        height: auto;
+        max-height: none;
     }
-    
+
+    .technologies__media {
+        max-height: 700px;
+    }
+
     .technologies__title {
         max-width: 70%;
     }
-    
+
     .technologies__description p:last-child {
         max-width: 70%;
         margin-bottom: 0;
     }
-    
+
     .technologies__content,
     .technologies__description {
         display: flex;
@@ -223,93 +315,89 @@
         align-items: center;
         text-align: center;
     }
-    
+
     .technologies__grid {
         justify-content: center;
         align-items: center;
     }
-    
+
     .tech-card {
         max-width: 50%;
     }
-    
+
     .technologies__image-overlay {
-        width: 95%;
-    }
-    
-    /* Линии на этом разрешении */
-    .tech-line-horizontal {
-        top: 25%;
-    }
-    
-    .tech-line-vertical_4 {
-        left: 53%;
-        top: 25%;
+        width: 40%;
     }
 
-    .technologies__image-main img {
-        min-height: 1400px;
+    .tech-line-horizontal {
+        top: 29.5%;
+    }
+
+    .tech-line-vertical_4 {
+        left: 53%;
+        top: 29.5%;
     }
 }
 
-/* ===== ПЛАНШЕТЫ (768px - 1024px) ===== */
+/* Планшеты */
 @media (min-width: 768px) and (max-width: 1023px) {
     .technologies {
         min-height: auto;
     }
-    
+
     .technologies__container {
         display: flex;
         flex-direction: column;
     }
-    
+
     .technologies__image-main {
-        min-height: 60vh;
+        min-height: auto;
     }
-    
+
     .technologies__image-main img {
-        min-height: 500px;
+        max-height: 600px;
+        width: 100%;
     }
-    
+
     .technologies__image-overlay {
-        width: min(80vh, 700px);
+        width: 50%;
+        max-width: 700px;
     }
-    
+
     .technologies__frame {
-        width: 70%;
-        top: max(8%, 180px);
+        width: 60%;
+        top: max(2%, 40px);
     }
-    
+
     .technologies__grid {
         gap: 40px;
     }
-    
+
     .technologies__content {
         padding: 60px 40px 80px clamp(1rem, 5vw, 80px);
     }
-    
-    /* Линии на планшетах */
+
     .tech-line-vertical {
         left: 20px;
     }
-    
+
     .tech-line-vertical_4 {
         left: 300px;
-        top: 30%;
+        top: 31%;
     }
-    
+
     .tech-line-horizontal {
-        top: 30%;
+        top: 31%;
     }
 }
 
-/* ===== МОБИЛКИ ===== */
+/* Мобилки */
 @media (max-width: 767px) {
     .technologies__container {
         display: flex;
         flex-direction: column;
     }
-    
+
     .tech__vr {
         position: absolute;
         top: 135%;
@@ -326,7 +414,7 @@
         border-radius: 11px;
         padding: 6px 7px;
     }
-    
+
     .tech__vr-icon {
         position: relative;
         display: flex;
@@ -339,7 +427,7 @@
         -webkit-backdrop-filter: blur(61px);
         max-height: 154px;
     }
-    
+
     .tech__vr-icon span {
         position: absolute;
         font-size: 187px;
@@ -350,14 +438,14 @@
         color: rgba(255, 255, 255, 0.04);
         z-index: 1;
     }
-    
+
     .tech__vr-icon img {
         position: relative;
         width: 70%;
         height: auto;
         z-index: 2;
     }
-    
+
     .tech__vr-text {
         font-size: 15px;
         font-weight: var(--font-weight-regular);
@@ -368,65 +456,65 @@
         text-align: center;
         margin: 0 auto;
     }
-    
+
     .technologies__content {
         margin-top: 280px;
         padding: 0 34px 70px;
     }
-    
+
     .technologies__label {
         margin-bottom: 17px;
     }
-    
+
     .technologies__title {
         font-size: 40px;
         margin-bottom: 31px;
     }
-    
+
     .technologies__description {
         margin-bottom: 0;
     }
-    
+
     .technologies__description p {
         font-size: 15px;
     }
-    
+
     .technologies__grid {
         flex-direction: column;
         gap: 77px;
     }
-    
+
     .tech-card__icon {
         margin-bottom: 28px;
     }
-    
+
     .tech-card__title {
         font-size: 24px;
         margin-bottom: 18px;
     }
-    
+
     .technologies__media {
         max-height: 500px;
     }
-    
+
     .technologies__image-main {
         min-height: auto;
     }
-    
+
     .technologies__image-main img {
         min-height: 600px;
     }
-    
+
     .technologies__frame {
         width: 80%;
         top: 10%;
     }
-    
+
     .technologies__image-overlay {
-        width: 65%;
+        width: 70%;
         bottom: 0;
     }
-    
+
     .technologies__overlay-text {
         position: absolute;
         bottom: 0;
@@ -440,7 +528,7 @@
         -webkit-backdrop-filter: blur(61px);
         z-index: 10;
     }
-    
+
     .technologies__overlay-text p {
         margin: 0 auto;
         color: var(--color-white);
@@ -449,19 +537,18 @@
         letter-spacing: -0.03em;
         line-height: 1.41;
     }
-    
-    /* Линии на мобилках */
+
     .tech-line-vertical {
         left: 15px;
     }
-    
+
     .tech-line-vertical_4 {
         left: 50%;
         right: 50%;
         transform: rotate(90deg);
-        bottom: 33%;
+        bottom: 20%;
     }
-    
+
     .tech-line-horizontal {
         top: 38%;
     }
@@ -471,40 +558,133 @@
     .technologies__title {
         font-size: 32px;
     }
-    
+
     .tech-card__title {
         font-size: 20px;
     }
-    
+
     .tech-card__text {
         font-size: 13px;
     }
-    
+
     .technologies__content {
         padding: 0 20px 50px;
     }
-    
+
     .technologies__image-overlay {
-        width: 90%;
+        width: 100%;
     }
-    
-    /* Линии на маленьких экранах */
+
     .tech-line-vertical {
         left: 10px;
     }
-    
+
     .tech-line-horizontal {
-        top: min(40%, 685px);
+        top: min(41%, 720px);
     }
-    
+
     .tech-line-vertical_4 {
-        top: 720px;
+        bottom: 15%;
     }
 
     .tech__vr {
-        top: 118%;
+        top: 112%;
         left: 50%;
         transform: translateX(-50%);
         width: 95%;
+    }
+}
+
+/* Большие экраны */
+@media (min-width: 1920px) {
+    .technologies__container {
+        height: 100vh;
+        height: 100dvh;
+        max-height: none;
+    }
+
+    .technologies__content {
+        padding-top: clamp(80px, 6vh, 120px);
+        padding-bottom: clamp(80px, 6vh, 120px);
+        padding-left: clamp(100px, 8vw, 280px);
+    }
+
+    .technologies__label {
+        font-size: 18px;
+        padding: 12px 20px;
+        margin-bottom: 30px;
+    }
+
+    .technologies__title {
+        font-size: 72px;
+        margin-bottom: 40px;
+        max-width: 650px;
+    }
+
+    .technologies__description p {
+        font-size: 18px;
+        margin-bottom: 20px;
+        max-width: 550px;
+    }
+
+    .technologies__grid {
+        gap: 120px;
+    }
+
+    .tech-card {
+        max-width: 320px;
+    }
+
+    .tech-card__icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 35px;
+    }
+
+    .tech-card__title {
+        font-size: 28px;
+        margin-bottom: 25px;
+    }
+
+    .tech-card__text {
+        font-size: 16px;
+    }
+
+    .technologies__image-overlay {
+        width: 80%;
+        max-width: 900px;
+    }
+
+    .technologies__frame {
+        top: 5rem;
+        max-width: 950px;
+    }
+
+    .tech-line-horizontal {
+        top: 60%;
+    }
+
+    .tech-line-vertical_4 {
+        top: 60%;
+    }
+}
+
+@media (min-width: 1440px) {
+    .tech-line-horizontal {
+        top: 58%;
+    }
+
+    .tech-line-vertical_4 {
+        top: 58%;
+    }
+}
+
+@media (max-width: 374px) {
+    .tech-line-vertical_4 {
+        bottom: 13.5%;
+    }
+
+    .tech-line-horizontal {
+        top: 740px;
     }
 }

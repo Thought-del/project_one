@@ -9,8 +9,31 @@
     border: 0;
 }
 
+.container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    width: 100%;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-primary {
+    background: var(--color-primary);
+    color: var(--color-white);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.btn-primary:hover {
+    color: var(--color-primary);
+    background: var(--color-white);
+}
+
 @media (max-width: 768px) {
-    #section_title {
+    .section_title {
         letter-spacing: -0.03em;
     }
 }

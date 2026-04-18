@@ -56,13 +56,11 @@
     background: var(--color-bg-dark);
     top: 16px;
     right: 16px;
-    border: none;
     width: 39px;
     height: 39px;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
     transition: transform 0.3s ease;
     z-index: 10;
     border-radius: 50%;
@@ -73,7 +71,7 @@
 }
 
 .lightbox__content h2 {
-    font-size: var(--font-size-4xl);
+    font-size: 28px;
     font-weight: var(--font-weight-medium);
     line-height: 1.35;
     letter-spacing: -0.02em;
@@ -165,11 +163,11 @@
     .lightbox {
         width: 85%;
     }
-    
+
     .lightbox__content {
         padding: 25px 35px 35px;
     }
-    
+
     .lightbox-image {
         max-width: 550px;
     }
@@ -179,15 +177,15 @@
     .lightbox__content {
         padding: 25px 30px 35px;
     }
-    
+
     .lightbox__content h2 {
         font-size: 28px;
     }
-    
+
     .lightbox__content p {
         font-size: 14px;
     }
-    
+
     .thumbnail {
         width: 70px;
         height: 53px;
@@ -198,32 +196,32 @@
     .lightbox {
         width: 95%;
     }
-    
+
     .lightbox__content {
         padding: 20px 20px 25px;
         max-height: 80vh;
     }
-    
+
     .lightbox__content h2 {
         font-size: 22px;
         padding-right: 40px;
     }
-    
+
     .lightbox__close {
         top: 12px;
         right: 12px;
         width: 32px;
         height: 32px;
     }
-    
+
     .lightbox-image {
         max-width: 100%;
     }
-    
+
     .lightbox-image img {
         aspect-ratio: 4 / 3;
     }
-    
+
     .thumbnail {
         width: 60px;
         height: 45px;
@@ -234,11 +232,11 @@
     .lightbox__content h2 {
         font-size: 18px;
     }
-    
+
     .lightbox__content p {
         font-size: 12px;
     }
-    
+
     .thumbnail {
         width: 50px;
         height: 38px;

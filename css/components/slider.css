@@ -64,12 +64,14 @@
 .slider-container {
     position: relative;
     overflow: visible;
+    user-select: none;
 }
 
 .slider-track {
     display: flex;
     gap: 28px;
     transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
 }
 
 .slide {
@@ -142,8 +144,7 @@
     max-width: 280px;
 }
 
-/* ===== АДАПТИВ ===== */
-
+/* Адаптив */
 @media (max-width: 1600px) {
     .slide {
         flex: 0 0 calc((100% - 28px) / 2);
@@ -155,11 +156,11 @@
     .slide {
         flex: 0 0 calc((100% - 28px) / 2);
     }
-    
+
     .slider-controls {
         padding: 0 clamp(1rem, 5vw, 100px);
     }
-    
+
     .projects-info {
         padding: 60px 0 0 clamp(1rem, 5vw, 100px);
     }
@@ -169,11 +170,11 @@
     .slide {
         flex: 0 0 100%;
     }
-    
+
     .slider-controls {
         padding: 0 clamp(1rem, 4vw, 60px);
     }
-    
+
     .projects-info {
         padding: 40px 0 0 clamp(1rem, 4vw, 60px);
     }
@@ -183,62 +184,63 @@
     .projects {
         padding-bottom: 0;
     }
-    
+
     .projects .container {
         padding: 61px 20px 58px;
     }
-    
+
     .projects-info {
         padding: 0;
     }
-    
+
     .projects-info__label {
         margin-bottom: 15px;
     }
-    
+
     .section-title {
         font-size: 38px;
         margin-bottom: 35px;
+        max-width: 300px;
     }
-    
+
     .projects-info p {
         display: none;
     }
-    
+
     .projects__slider {
         display: flex;
         flex-direction: column-reverse;
     }
-    
+
     .slider-container {
         margin-bottom: 35px;
     }
-    
+
     .slider-controls {
         margin: 0 auto;
         padding: 0;
     }
-    
+
     .slider-btn {
         width: 65px;
         height: 65px;
     }
-    
+
     .slide {
         flex: 0 0 100%;
     }
-    
+
     .slide__image-wrapper {
         width: 100%;
         max-height: 400px;
     }
-    
+
     .slide__image-wrapper img {
         width: 100%;
         max-height: 400px;
         display: block;
     }
-    
+
     .slide-info {
         display: none;
     }

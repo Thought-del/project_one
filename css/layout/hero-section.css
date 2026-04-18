@@ -3,9 +3,11 @@
 .hero {
     position: relative;
     min-height: 100vh;
+    min-height: 100dvh;
     overflow: hidden;
 }
 
+/* Линии */
 .hero-line-vertical {
     position: absolute;
     width: 1px;
@@ -42,14 +44,12 @@
     z-index: 2;
 }
 
+/* Контент */
 .hero__content {
     position: absolute;
     bottom: clamp(1rem, 5vw, 90px);
     left: clamp(1rem, 10vw, 220px);
     z-index: 10;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
     max-width: clamp(25.75rem, 16.0712rem + 20.2482vw, 38.25rem);
     width: 90%;
 }
@@ -57,7 +57,7 @@
 .hero__title {
     font-size: clamp(2rem, 6vw, 69px);
     font-weight: var(--font-weight-regular);
-    color: var(--color-white);
+    color: var(--color-white) !important;
     line-height: 0.81;
     letter-spacing: -0.06em;
     margin-bottom: 21px;
@@ -77,19 +77,6 @@
     max-width: 550px;
 }
 
-.btn-primary {
-    background: var(--color-primary);
-    color: var(--color-white);
-    transition: background 0.3s ease, color 0.3s ease;
-    border: none;
-    cursor: pointer;
-}
-
-.btn-primary:hover {
-    color: var(--color-primary);
-    background: var(--color-white);
-}
-
 .hero__btn {
     position: relative;
     border-radius: 4px;
@@ -98,6 +85,14 @@
     line-height: 1;
     letter-spacing: -0.03em;
     padding: 20px 32px;
+    background: var(--color-primary);
+    color: var(--color-white);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.hero__btn:hover {
+    color: var(--color-primary);
+    background: var(--color-white);
 }
 
 .hero__btn svg {
@@ -106,6 +101,7 @@
     top: 10px;
 }
 
+/* VR блок */
 .hero__vr {
     position: absolute;
     bottom: clamp(1rem, 5vw, 90px);
@@ -162,7 +158,7 @@
     max-width: 270px;
 }
 
-/* 3D анимация */
+/* 3D и Fallback */
 .hero__3d {
     position: absolute;
     top: 0;
@@ -185,10 +181,40 @@
     z-index: 1;
 }
 
-.hero__3d-fallback img {
-    width: 100%;
+.hero__fallback-left,
+.hero__fallback-right {
+    position: absolute;
+    top: 0;
+    width: 50%;
     height: 100%;
-    object-fit: cover;
+    overflow: hidden;
+}
+
+.hero__fallback-left {
+    left: 0;
+}
+
+.hero__fallback-right {
+    right: 0;
+}
+
+.hero__fallback-left img,
+.hero__fallback-right img {
+    width: auto;
+    height: 100%;
+    max-width: none;
+}
+
+.hero__fallback-left img {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.hero__fallback-right img {
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 #women-do {
@@ -199,14 +225,15 @@
     width: clamp(25rem, 15.8222rem + 39.1586vw, 62.8125rem);
     height: auto;
     z-index: 6;
+    pointer-events: none;
 }
 
-@media (min-width: 1440px) and (max-width: 1600px) {
-    .hero-line-diagonal {
-        bottom: 23%;
-    }
+/* Мобильный оверлей */
+.mobile__overlay-hero {
+    display: none;
 }
 
+/* Десктоп */
 @media (min-width: 1024px) and (max-width: 1440px) {
     .hero-line-diagonal {
         bottom: 31%;
@@ -217,127 +244,228 @@
     .hero-line-horizontal {
         top: 50%;
     }
+
+    #women-do {
+        width: 55vw;
+    }
 }
 
-/* ===== ПЛАНШЕТЫ (768px - 1024px) ===== */
+@media (min-width: 1440px) and (max-width: 1600px) {
+    .hero-line-diagonal {
+        bottom: 23%;
+    }
+}
+
+@media (min-width: 1920px) {
+    .hero__3d {
+        transform: scale(1.6);
+    }
+}
+
+/* Планшеты */
 @media (min-width: 768px) and (max-width: 1023px) {
     .hero {
         min-height: 60vh;
+        min-height: 60dvh;
     }
 
-    .hero__3d-fallback {
-        display: block;
-        min-height: 60vh;
-    }
-    
-    #women-do {
-        width: clamp(20rem, 25vw, 35rem);
-    }
-    
     .hero-line-diagonal,
     .hero-line-horizontal,
     .hero-line-vertical {
         display: none;
     }
-    
+
+    .hero__3d {
+        display: none;
+    }
+
+    .hero__3d-fallback {
+        display: block;
+        height: 100%;
+    }
+
     .hero__content {
         left: clamp(1rem, 5vw, 60px);
         bottom: 50%;
         transform: translateY(50%);
         width: min(300px, 35vw);
     }
-    
+
     .hero__vr {
         right: clamp(1rem, 5vw, 60px);
         bottom: 50%;
         transform: translateY(50%);
         width: min(200px, 25vw);
     }
-    
+
     .hero__title {
         font-size: 48px;
     }
-    
+
     .hero__text {
         font-size: 14px;
     }
+
+    #women-do {
+        width: 70vw;
+    }
 }
 
-/* ===== МОБИЛКИ ===== */
+/* Мобилки */
 @media (max-width: 767px) {
     .hero {
         min-height: 135vh;
-        padding: 0 20px;
+        min-height: 135dvh;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        position: relative;
     }
-    
+
     .hero-line-diagonal,
     .hero-line-horizontal,
     .hero-line-vertical {
         display: none;
     }
-    
+
     .hero__3d {
         display: none;
     }
-    
-    .hero__3d-fallback {
-        display: block;
-        min-height: 135vh;
-    }
-    
+
     .hero__content {
-        position: absolute;
-        bottom: auto;
-        left: 0;
-        right: 0;
-        top: 0;
-        z-index: 999;
-        padding: 100px 30px 0;
-        background: var(--color-white-04);
-        backdrop-filter: blur(40.4px);
-        width: 100%;
-        max-width: none;
-        -webkit-backdrop-filter: blur(40.4px);
+        display: none;
     }
-    
-    .hero__title {
-        font-size: 45px;
-        margin-bottom: 19px;
-    }
-    
-    .hero__text {
-        font-size: 15px;
-        margin-bottom: 28px;
-    }
-    
-    .hero__btn {
-        width: 100%;
-        font-size: 15px;
-    }
-    
+
     .hero__vr {
         display: none;
     }
-    
+
+    .mobile__overlay-hero {
+        position: relative;
+        width: 100%;
+        z-index: 3;
+        display: block;
+    }
+
+    .mobile__overlay-hero img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+    }
+
+    .overlay-hero {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        z-index: 2;
+    }
+
+    .mobile-hero__content {
+        position: relative;
+        z-index: 999;
+        padding: 100px 20px 0;
+        width: 100%;
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+    }
+
+    .mobile-hero__content .hero__title {
+        font-size: 45px;
+        margin-bottom: 19px;
+    }
+
+    .mobile-hero__content .hero__text {
+        font-size: 15px;
+        margin-bottom: 28px;
+    }
+
+    .mobile-hero__content .hero__btn {
+        width: 100%;
+        font-size: 15px;
+    }
+
+    .hero__3d-fallback {
+        display: block;
+        position: relative;
+        width: 100%;
+        flex: 1;
+        min-height: 0;
+        z-index: 1;
+    }
+
+    .hero__fallback-left,
+    .hero__fallback-right {
+        position: absolute;
+        top: 0;
+        width: 50%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .hero__fallback-left {
+        left: 0;
+    }
+
+    .hero__fallback-right {
+        right: 0;
+    }
+
+    .hero__fallback-left img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: 25%;
+    }
+
+    .hero__fallback-right img {
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: 75%;
+    }
+
     #women-do {
-        width: 83vh;
+        min-width: 80vh;
+        z-index: 5;
+        bottom: 0;
+        max-width: none;
     }
 }
 
 @media (max-width: 480px) {
-    .hero, .hero__3d-fallback {
+    .hero {
         min-height: 115vh;
+        min-height: 115dvh;
     }
 
-    .hero__title {
+    .mobile-hero__content {
+        padding: 80px 16px 0;
+    }
+
+    .mobile-hero__content .hero__title {
         font-size: 32px;
     }
-    
-    .hero__text {
+
+    .mobile-hero__content .hero__text {
         font-size: 13px;
     }
-    
-    .hero__btn {
+
+    .mobile-hero__content .hero__btn {
         padding: 14px 20px;
         font-size: 13px;
     }

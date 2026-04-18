@@ -1,24 +1,26 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: var(--font-family);
 }
 
-button {
-    font: inherit;
-    border: none;
-    background: none;
-    cursor: pointer;
+html {
+    scroll-behavior: smooth;
 }
 
-@media(prefers-reduced-motion: reduce) {
-    * {
-        transition: none !important;
-    }
+body {
+    min-height: 100vh;
+    color: var(--color-white);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* ul, ol {
+ul,
+ol {
     list-style: none;
 }
 
@@ -28,15 +30,84 @@ a {
     color: inherit;
 }
 
-img {
-    width: 100%;
-    height: auto;
+img,
+picture,
+video,
+canvas,
+svg {
     display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+img {
     object-fit: cover;
 }
 
 input,
+button,
 textarea,
 select {
     font: inherit;
-} */
+    color: inherit;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+input::-ms-reveal,
+input::-ms-clear {
+    display: none;
+}
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+:focus {
+    outline: none;
+}
+
+:focus-visible:not(input, textarea) {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border: none;
+}
+
+.custom-checkbox input:focus-visible + .custom-checkbox__box {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

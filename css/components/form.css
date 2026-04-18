@@ -22,7 +22,6 @@
     z-index: 2;
 }
 
-/* Верхняя часть */
 .contact_info {
     text-align: center;
     margin-bottom: 76px;
@@ -44,7 +43,6 @@
     color: var(--color-white);
 }
 
-/* Сетка */
 .contact__grid {
     display: flex;
     gap: 20px;
@@ -55,9 +53,9 @@
     flex: 1;
     background: rgba(68, 68, 68, 0.39);
     backdrop-filter: blur(90.7px);
+    -webkit-backdrop-filter: blur(90.7px);
     padding: 50px 45px 67px 45px;
     max-width: 610px;
-    -webkit-backdrop-filter: blur(90.7px);
 }
 
 .contact-item h3 {
@@ -74,7 +72,6 @@
     max-width: 265px;
 }
 
-/* Форма */
 .form {
     display: flex;
     flex-direction: column;
@@ -83,24 +80,26 @@
 
 .form input,
 .form textarea {
-    border: none;
-    background: none;
     border-bottom: 1px solid var(--color-white-18);
     width: 100%;
     padding: 17px 0;
     color: var(--color-white);
     transition: border-color 0.2s;
+    font-size: 17px;
 }
 
 .form input:focus,
 .form textarea:focus {
-    outline: none;
     border-color: var(--color-primary);
 }
 
 .form textarea {
     min-height: 80px;
-    resize: vertical;
+}
+
+.form input::placeholder {
+    font-size: 17px;
+    color: var(--color-white-33);
 }
 
 .form label {
@@ -114,16 +113,8 @@
     padding: 20px 0;
     background: var(--color-primary);
     color: var(--color-white);
-    border: none;
-    cursor: pointer;
-    transition: background 0.3s ease;
 }
 
-.btn-submit:hover {
-    background: var(--color-primary-dark);
-}
-
-/* Телефон с флагом */
 .phone-input-wrapper {
     position: relative;
 }
@@ -141,31 +132,23 @@
 .phone-input__code {
     padding: 17px 0;
     color: var(--color-white);
+    font-size: 17px;
+    letter-spacing: 0.02em;
 }
 
 .phone-input input {
     flex: 1;
-    padding: 17px 12px;
-    border: none;
-    background: none;
-    color: var(--color-white);
-}
-
-.phone-input input:focus {
-    outline: none;
+    padding: 17px 4px;
+    border-bottom: none;
 }
 
 .phone-input__dropdown-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
     display: flex;
     align-items: center;
     gap: 6px;
-    margin-right: 6px;
+    margin-right: 12px;
 }
 
-/* Выпадающий список стран */
 .country-dropdown {
     position: absolute;
     top: 100%;
@@ -199,7 +182,6 @@
     color: rgba(255, 255, 255, 0.6);
 }
 
-/* Кастомный чекбокс */
 .custom-checkbox {
     display: flex;
     align-items: center;
@@ -245,14 +227,12 @@
     text-decoration: underline;
 }
 
-/* Блок с кнопкой и чекбоксом */
 .form__bottom {
     display: flex;
     flex-direction: column;
     gap: 60px;
 }
 
-/* Контактная информация */
 .contact-info {
     display: flex;
     flex-direction: column;
@@ -281,7 +261,6 @@
     color: var(--color-white);
     transition: color 0.3s ease;
     text-decoration: none;
-    cursor: pointer;
 }
 
 .contact_item-info a:first-child {
@@ -292,7 +271,6 @@
     color: var(--color-primary);
 }
 
-/* Соцсети */
 .social-links {
     display: flex;
     gap: 6px;
@@ -305,21 +283,11 @@
     width: 51px;
     height: 51px;
     background: rgba(255, 255, 255, 0.11);
-    cursor: pointer;
     transition: background 0.3s ease;
 }
 
 .social-link:hover {
     background: var(--color-primary);
-}
-
-/* Ошибки */
-.form .phone-input-wrapper,
-.form input:not([type="checkbox"]),
-.form textarea {
-    position: relative;
-    display: block;
-    width: 100%;
 }
 
 /* ===== АДАПТИВ ===== */
@@ -334,15 +302,15 @@
     .contact-item {
         padding: 40px 30px;
     }
-    
+
     .contact-item h3 {
         font-size: 32px;
     }
-    
+
     .contact_item-info a {
         font-size: 24px;
     }
-    
+
     .contact .container {
         padding: 60px clamp(1rem, 6vw, 100px);
     }
@@ -352,71 +320,72 @@
     .contact .container {
         padding: 44px 0;
     }
-    
+
     .contact_info {
         padding: 0 20px;
         margin-bottom: 55px;
         text-align: start;
     }
-    
+
     .contact__label {
         margin-bottom: 18px;
     }
-    
+
     .contact .section-title {
         font-size: 38px;
+        max-width: 280px;
     }
-    
+
     .contact__grid {
         flex-direction: column-reverse;
         align-items: center;
         padding: 0 15px;
     }
-    
+
     .contact-item {
         width: 100%;
         min-height: auto;
         padding: 32px 20px 47px;
     }
-    
+
     .contact-item h3 {
         font-size: 25px;
         margin-bottom: 15px;
     }
-    
+
     .contact-item > p {
         font-size: 15px;
         margin-bottom: 36px;
     }
-    
+
     .contact-info {
         gap: 33px;
     }
-    
+
     .contact_item-info span {
         font-size: 12px;
         margin-bottom: 7px;
     }
-    
+
     .contact_item-info a {
         font-size: 25px;
     }
-    
+
     .form {
         gap: 25px;
     }
-    
+
     .form__bottom {
         margin-top: 5px;
         flex-direction: column-reverse;
         gap: 30px;
     }
-    
+
     .btn-submit {
         margin-top: 0;
         font-size: 15px;
     }
-    
+
     .custom-checkbox__text {
         font-size: 13px;
     }
@@ -425,18 +394,43 @@
 @media (max-width: 480px) {
     .contact .section-title {
         font-size: 28px;
+        max-width: 220px;
     }
-    
+
     .contact-item h3 {
         font-size: 22px;
     }
-    
+
     .contact_item-info a {
         font-size: 20px;
     }
-    
+
     .btn-submit {
         font-size: 14px;
         padding: 16px 0;
     }
+}
+
+/* Autofill fix — фон как у родителя */
+.form input:-webkit-autofill,
+.form input:-webkit-autofill:hover,
+.form input:-webkit-autofill:focus,
+.form input:-webkit-autofill:active,
+.form textarea:-webkit-autofill,
+.form textarea:-webkit-autofill:hover,
+.form textarea:-webkit-autofill:focus,
+.form textarea:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px rgba(68, 68, 68, 0.39) inset !important;
+    box-shadow: 0 0 0 1000px rgba(68, 68, 68, 0.39) inset !important;
+    -webkit-text-fill-color: var(--color-white) !important;
+    caret-color: var(--color-white);
+    transition: background-color 999999s ease-in-out 0s;
+}
+
+.phone-input input:-webkit-autofill,
+.phone-input input:-webkit-autofill:hover,
+.phone-input input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px rgba(68, 68, 68, 0.39) inset !important;
+    box-shadow: 0 0 0 1000px rgba(68, 68, 68, 0.39) inset !important;
+    -webkit-text-fill-color: var(--color-white) !important;
 }

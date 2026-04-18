@@ -1,16 +1,9 @@
-// lightbox.js
-
 import { SELECTORS } from './constants.js';
 
-let lightbox;
-let overlay;
-let closeBtn;
-let thumbnailsContainer;
-let lightboxImage;
-let lightboxTitle;
-let lightboxDesc;
+let lightbox, overlay, closeBtn, thumbnailsContainer, lightboxImage, lightboxTitle, lightboxDesc;
+let currentThumbnails = [];
+let currentIndex = 0;
 
-// Данные для миниатюр каждого слайда
 const slidesThumbnails = {
     1: ['images/slide1/B3389237-FC61-4BE2-9C70-F770AFFCBB6A.jpeg', 'images/slide1/15937D36-A714-401F-9669-D376D81D1FB8.jpeg', 'images/slide1/50451211-25D1-4013-91A5-76D34A647446.jpeg', 'images/slide1/C3B7059A-40FA-498D-BCC9-DB35BFA20F0C.jpeg', 'images/slide1/FAE73CFC-23E3-4A2D-A5E3-642E78DB4792.jpeg'],
     2: ['images/slide2/F7332D93-1E75-46B7-8DAC-5AB401679719.jpeg', 'images/slide2/62A84D71-ADEA-41CC-AF8A-A454C45DE491.jpeg', 'images/slide2/A146B87C-D0CE-47D0-AB19-4FE3CFD725C0.jpeg', 'images/slide2/F5E7F8E7-D2C2-46CD-964D-C8A9F6A1615F.jpeg'],
@@ -19,10 +12,9 @@ const slidesThumbnails = {
 };
 
 function renderThumbnails(thumbnailsArray, activeIndex = 0) {
-    if (!thumbnailsContainer) {
-        console.warn('thumbnailsContainer не найден');
-        return;
-    }
+    if (!thumbnailsContainer) return;
+    
+    currentThumbnails = thumbnailsArray;
     thumbnailsContainer.innerHTML = '';
     
     thumbnailsArray.forEach((src, idx) => {
@@ -30,6 +22,7 @@ function renderThumbnails(thumbnailsArray, activeIndex = 0) {
         thumbBtn.type = 'button';
         thumbBtn.className = 'thumbnail';
         thumbBtn.dataset.index = idx;
+        thumbBtn.setAttribute('aria-label', `Миниатюра ${idx + 1}`);
         
         const thumbImg = document.createElement('img');
         thumbImg.src = src;
@@ -42,7 +35,9 @@ function renderThumbnails(thumbnailsArray, activeIndex = 0) {
         
         thumbBtn.addEventListener('click', () => {
             if (lightboxImage) lightboxImage.src = src;
+            currentIndex = idx;
             setActiveThumbnail(thumbBtn);
+            preloadAdjacentImages(idx);
         });
         
         thumbnailsContainer.appendChild(thumbBtn);
@@ -53,28 +48,42 @@ function renderThumbnails(thumbnailsArray, activeIndex = 0) {
 }
 
 function setActiveThumbnail(activeThumb) {
-    const allThumbs = thumbnailsContainer?.querySelectorAll('.thumbnail');
-    allThumbs?.forEach(thumb => thumb.classList.remove('active'));
+    thumbnailsContainer?.querySelectorAll('.thumbnail').forEach(thumb => {
+        thumb.classList.remove('active');
+        thumb.setAttribute('aria-current', 'false');
+    });
     activeThumb.classList.add('active');
+    activeThumb.setAttribute('aria-current', 'true');
+}
+
+function preloadAdjacentImages(index) {
+    const preloadLink = document.createElement('link');
+    preloadLink.rel = 'preload';
+    preloadLink.as = 'image';
+    
+    if (currentThumbnails[index + 1]) {
+        preloadLink.href = currentThumbnails[index + 1];
+        document.head.appendChild(preloadLink);
+    }
 }
 
 function openLightbox(slideIndex, bigImageSrc, title, desc) {
+    if (!lightbox) return;
+    
     if (lightboxTitle) lightboxTitle.textContent = title;
     if (lightboxDesc) lightboxDesc.textContent = desc;
     if (lightboxImage && bigImageSrc) lightboxImage.src = bigImageSrc;
     
-    // Для клонов индекс может быть больше 4, приводим к оригинальному
-    let originalIndex = slideIndex;
-    if (slideIndex > 4) {
-        originalIndex = ((slideIndex - 1) % 4) + 1;
-    }
+    let originalIndex = slideIndex > 4 ? ((slideIndex - 1) % 4) + 1 : slideIndex;
+    currentIndex = 0;
     
     const thumbnailsArray = slidesThumbnails[originalIndex] || [];
     renderThumbnails(thumbnailsArray);
     
-    if (lightbox) lightbox.removeAttribute('hidden');
-    if (overlay) overlay.removeAttribute('hidden');
+    lightbox.removeAttribute('hidden');
+    overlay?.removeAttribute('hidden');
     document.body.style.overflow = 'hidden';
+    lightbox.setAttribute('aria-hidden', 'false');
 }
 
 function openLightboxFromSlide(title, desc, bigImageSrc, slideIndex) {
@@ -82,31 +91,33 @@ function openLightboxFromSlide(title, desc, bigImageSrc, slideIndex) {
 }
 
 function closeLightbox() {
-    if (lightbox) lightbox.setAttribute('hidden', '');
-    if (overlay) overlay.setAttribute('hidden', '');
+    if (!lightbox) return;
+    
+    lightbox.setAttribute('hidden', '');
+    overlay?.setAttribute('hidden', '');
     document.body.style.overflow = '';
+    lightbox.setAttribute('aria-hidden', 'true');
 }
 
 function initLightbox() {
     lightbox = document.querySelector(SELECTORS.lightbox);
-    overlay = document.querySelector(SELECTORS.lightboxOverlay);
-    closeBtn = document.querySelector(SELECTORS.lightboxClose);
-    thumbnailsContainer = document.querySelector('.lightbox-thumbnails');
-    
     if (!lightbox) return;
     
+    overlay = document.querySelector(SELECTORS.lightboxOverlay);
+    closeBtn = document.querySelector(SELECTORS.lightboxClose);
+    thumbnailsContainer = document.querySelector(SELECTORS.lightboxThumbnails);
     lightboxImage = lightbox.querySelector('.lightbox-image img');
     lightboxTitle = lightbox.querySelector('h2');
     lightboxDesc = lightbox.querySelector('p');
     
-    if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
-    if (overlay) overlay.addEventListener('click', closeLightbox);
+    closeBtn?.addEventListener('click', closeLightbox);
+    overlay?.addEventListener('click', closeLightbox);
     
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && lightbox && !lightbox.hidden) {
+        if (e.key === 'Escape' && lightbox && !lightbox.hasAttribute('hidden')) {
             closeLightbox();
         }
     });
 }
 
-export { initLightbox, openLightbox, openLightboxFromSlide, closeLightbox };
+export { initLightbox, openLightboxFromSlide, closeLightbox };

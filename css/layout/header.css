@@ -7,8 +7,8 @@
     width: 100%;
     background: var(--color-white-04);
     backdrop-filter: blur(40.4px);
-    z-index: 1000;
     -webkit-backdrop-filter: blur(40.4px);
+    z-index: 1000;
 }
 
 .header__container {
@@ -50,7 +50,6 @@
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-medium);
     color: var(--color-white);
-    text-decoration: none;
     text-transform: uppercase;
     white-space: nowrap;
     transition: color 0.3s ease;
@@ -123,66 +122,66 @@
 
 .burger {
     display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
 }
 
-/* ===== ПЛАНШЕТЫ (768px - 1024px) ===== */
+/* Планшеты */
 @media (min-width: 768px) and (max-width: 1023px) {
     .header {
         min-height: auto;
     }
-    
+
     .header__container {
         padding: 12px 30px;
     }
-    
+
     .nav-list {
         gap: 24px;
     }
-    
+
     .nav-list a {
         font-size: 11px;
     }
-    
+
     .header__right {
         gap: 20px;
     }
-    
+
     .header__phone {
         font-size: 14px;
     }
-    
+
     .header__callback {
         font-size: 9px;
     }
 }
 
-/* ===== МОБИЛКИ ===== */
+/* Мобилки */
 @media (max-width: 767px) {
     .header {
         min-height: auto;
+        background: none;
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
     }
-    
+
     .header__container {
         align-items: flex-start;
         padding: 12px 20px;
     }
-    
+
     .nav-list {
         display: none;
     }
-    
+
     .header__right {
         gap: 8px;
     }
-    
+
     .header__social,
     .header__contacts {
         display: none;
     }
-    
+
     .phone__btn {
         display: flex;
         align-items: center;
@@ -192,7 +191,7 @@
         border-radius: 50%;
         background: var(--color-primary);
     }
-    
+
     .burger {
         display: flex;
         align-items: center;
@@ -208,7 +207,7 @@
     .header__container {
         padding: 12px 16px;
     }
-    
+
     .phone__btn,
     .burger {
         width: 44px;
