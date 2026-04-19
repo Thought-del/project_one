@@ -34,6 +34,6 @@
 
 @media (max-width: 768px) {
     .section_title {
-        letter-spacing: -0.03em;
+        letter-spacing: -0.03em !important;
     }
 }
